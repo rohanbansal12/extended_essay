@@ -1,0 +1,68 @@
+\subsection{Vanilla Scraping Script}
+\begin{minted}{python}
+import json
+from dataclasses import dataclass, field
+from dataclasses_json import dataclass_json
+from datetime import datetime
+from newspaper import Article
+from bs4 import BeautifulSoup
+from typing import List
+from queue import Queue
+from threading import Thread
+
+@dataclass_json
+@dataclass
+class LongformArticle:
+    title: str = ''
+    text: str = ''
+    url: str = ''
+    source: str = ''
+
+class WriteThread(Thread):
+    def __init__(self, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.queue = queue
+
+    def run(self):
+        with open(OUTPUT_FILE, 'a') as output_file:
+            output_file.write("[\n")
+            first_entry = True
+            while True:
+                article = self.queue.get()
+                if article is None:
+                    output_file.write("\n]")
+                    break
+                article_json = article.to_json(indent=4)
+                if first_entry:
+                    first_entry = False
+                else:
+                    output_file.write(",\n")
+                    output_file.write(article_json)
+
+
+class ScrapeThread(Thread):
+    def __init__(self, urls, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.urls = urls
+        self.queue = queue
+    @staticmethod
+    def scrape(url):
+        article = Article(url['url'])
+        article.download()
+        article.parse()
+        soup = BeautifulSoup(article.html, 'lxml')
+        ga = LongformArticle()
+        ga.url = url['url']
+        ga.title = url['title']
+        ga.text = article.text
+        ga.source = url['source']
+        return ga
+    def run(self):
+        for url in self.urls: 
+            try:
+                print(f"scraping {url['url']}")
+                article = ScrapeThread.scrape(url)
+                self.queue.put(article)
+            except Exception as e: # Best effort
+                print(f'ScrapeThread Exception: {e}')
+\end{minted}

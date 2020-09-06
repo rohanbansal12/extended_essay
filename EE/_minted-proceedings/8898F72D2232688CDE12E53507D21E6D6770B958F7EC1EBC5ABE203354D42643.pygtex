@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{step}\PYG{p}{,} \PYG{n}{batch} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{cycle}\PYG{p}{(}\PYG{n}{train\PYGZus{}loader}\PYG{p}{)):}
+    \PYG{c+c1}{\PYGZsh{} turn to training mode and calculate loss for backpropagation}
+    \PYG{n}{torch}\PYG{o}{.}\PYG{n}{enable\PYGZus{}grad}\PYG{p}{()}
+    \PYG{n}{model}\PYG{o}{.}\PYG{n}{train}\PYG{p}{()}
+    \PYG{n}{optimizer}\PYG{o}{.}\PYG{n}{zero\PYGZus{}grad}\PYG{p}{()}
+    \PYG{n}{publications}\PYG{p}{,} \PYG{n}{articles}\PYG{p}{,} \PYG{n}{word\PYGZus{}attributes}\PYG{p}{,} \PYG{n}{attribute\PYGZus{}offsets}\PYG{p}{,} \PYG{n}{real\PYGZus{}labels} \PYG{o}{=} \PYG{n}{batch}
+    \PYG{n}{publication\PYGZus{}set} \PYG{o}{=} \PYG{p}{[}\PYG{n}{args}\PYG{o}{.}\PYG{n}{target\PYGZus{}publication}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{real\PYGZus{}labels}\PYG{p}{)}
+    \PYG{n}{publication\PYGZus{}set} \PYG{o}{=} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{tensor}\PYG{p}{(}\PYG{n}{publication\PYGZus{}set}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{torch}\PYG{o}{.}\PYG{n}{long}\PYG{p}{)}
+    \PYG{n}{publication\PYGZus{}set} \PYG{o}{=} \PYG{n}{publication\PYGZus{}set}\PYG{o}{.}\PYG{n}{to}\PYG{p}{(}\PYG{n}{device}\PYG{p}{)}
+    \PYG{n}{articles} \PYG{o}{=} \PYG{n}{articles}\PYG{o}{.}\PYG{n}{to}\PYG{p}{(}\PYG{n}{device}\PYG{p}{)}
+    \PYG{n}{word\PYGZus{}attributes} \PYG{o}{=} \PYG{n}{word\PYGZus{}attributes}\PYG{o}{.}\PYG{n}{to}\PYG{p}{(}\PYG{n}{device}\PYG{p}{)}
+    \PYG{n}{attribute\PYGZus{}offsets} \PYG{o}{=} \PYG{n}{attribute\PYGZus{}offsets}\PYG{o}{.}\PYG{n}{to}\PYG{p}{(}\PYG{n}{device}\PYG{p}{)}
+    \PYG{n}{logits} \PYG{o}{=} \PYG{n}{model}\PYG{p}{(}\PYG{n}{publication\PYGZus{}set}\PYG{p}{,} \PYG{n}{articles}\PYG{p}{,} \PYG{n}{word\PYGZus{}attributes}\PYG{p}{,} \PYG{n}{attribute\PYGZus{}offsets}\PYG{p}{)}
+    \PYG{n}{L} \PYG{o}{=} \PYG{n}{loss}\PYG{p}{(}\PYG{n}{logits}\PYG{p}{,} \PYG{n}{labels}\PYG{p}{)}
+    \PYG{n}{L}\PYG{o}{.}\PYG{n}{backward}\PYG{p}{()}
+    \PYG{n}{optimizer}\PYG{o}{.}\PYG{n}{step}\PYG{p}{()}
+    \PYG{n}{running\PYGZus{}loss} \PYG{o}{+=} \PYG{n}{L}\PYG{o}{.}\PYG{n}{item}\PYG{p}{()}
+\end{Verbatim}

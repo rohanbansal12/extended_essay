@@ -1,0 +1,141 @@
+\subsection{Longform.org Crawling Script}
+\begin{minted}{python}
+@dataclass_json
+@dataclass
+class LongformArticleUrl:
+    url: str
+    title: str
+    source: str
+
+class WriteThread(Thread):
+    def __init__(self, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.queue = queue
+	def run(self):
+        with open(OUTPUT_FILE, 'a') as output_file:
+            output_file.write("[\n")
+            first_entry = True
+			while True:
+			    article = self.queue.get()
+				if article is None:
+			        output_file.write("\n]")
+			        break
+				article_json = article.to_json(indent=4)
+				if first_entry:
+			        first_entry = False
+			    else:
+			        output_file.write(",\n")
+				output_file.write(article_json)
+
+class ScrapeThread(Thread):
+    def __init__(self, chunk, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.chunk = chunk
+        self.queue = queue
+	def run(self):
+        for i in self.chunk:
+            try:
+                print(f'Getting articles from list page {i}')
+                article_list_page = get(f"{BASE_URL}{i}")
+                soup = BeautifulSoup(article_list_page.text, "html5lib")
+                articles = soup.find_all('article', 
+                    {'class': 'post--single'})
+                for article in articles: 
+                    link = article.find('a', 
+                        {'class': 'post__link'})
+                    title = article.find('span', 
+                        {'class': 'post__title__highlight'})
+                    source = article.find('a', 
+                        {'class': 'post__permalink'})
+                    print(link)
+                    if (title is None or 
+                        title.string is None or 
+                        source is None):
+                        continue
+                    article_url = LongformArticleUrl(url=link['href'], 
+                        title=str(title.string.strip()) or '', 
+                        source=source['href'])
+                    self.queue.put(article_url)
+            except Exception as e:
+                print(f'Something went wrong when scraping: {e}')
+                print("------------------------------------------")
+\end{minted}
+\subsection{Vox Crawling Script}
+\begin{minted}{python}
+@dataclass_json
+@dataclass
+class VoxArticleUrl:
+    url: str
+    title: str
+    month: int
+    year: int
+
+YEARS = [str(month) for month in range(2014,2020)]
+MONTHS = [str(month) for month in range(1,13)]
+
+class WriteThread(Thread):
+    def __init__(self, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.queue = queue
+
+    def run(self):
+        with open(OUTPUT_FILE, 'a') as output_file:
+            output_file.write("[\n")
+            first_entry = True
+            while True:
+                article = self.queue.get()
+                if article is None:
+                    output_file.write("\n]")
+                    break
+                article_json = article.to_json(indent=4)
+                if first_entry:
+                    first_entry = False
+                else:
+                    output_file.write(",\n")
+                output_file.write(article_json)
+
+
+class ScrapeThread(Thread):
+    def __init__(self, chunk, queue: Queue, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.chunk = chunk
+        self.queue = queue
+    def get_urls(self, year, month):
+        page = 1
+        while True:
+            sleep(1)  # Prevent rate limiting
+            print(f'Getting articles for {year}-{month}, page {page}')
+            return_data = get(f"{BASE_URL}/{year}/{month}/{page}", 
+                headers={'Accept': 'application/json'})
+            if return_data.status_code != 200:
+                print(f"Received status {return_data.status_code}")
+                if return_data.status_code != 429:
+                    return
+                else:
+                    sleep(10)
+            else:
+                page = page + 1
+                response = return_data.json()
+                soup = BeautifulSoup(response['html'], 
+                    "html5lib")
+                yield soup
+                if not response['has_more']:
+                    break
+    def run(self):
+        for year, month in self.chunk:
+            try:
+                for html in self.get_urls(year, month):
+                    h2s = html.find_all('h2')
+                    for h2 in h2s:
+                        a = h2.find('a')
+                        title = a.string
+                        url = a['href']
+                        print(title,url)
+                        vox_url = VoxArticleUrl(title=str(title), 
+                            url=str(url), 
+                            month=int(month), 
+                            year=int(year))
+                        self.queue.put(vox_url)
+            except Exception as e: # Best effort
+                print(f'Something went wrong when scraping: {e}')
+\end{minted}

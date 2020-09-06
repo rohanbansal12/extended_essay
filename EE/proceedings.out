@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Theory}{}% 2
+\BOOKMARK [1][-]{section.3}{Approaches}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{NLP Fundamentals}{section.3}% 4
+\BOOKMARK [3][-]{subsubsection.3.1.1}{One-Hot Encoding}{subsection.3.1}% 5
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Embedding Vectors}{subsection.3.1}% 6
+\BOOKMARK [2][-]{subsection.3.2}{RankFromSets \(RFS\)}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Bidirectional Encoder Representations from Transformers \(BERT\)}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Encoders}{subsection.3.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.2}{General Working}{subsection.3.3}% 10
+\BOOKMARK [1][-]{section.4}{Hypothesis/Applied Theory}{}% 11
+\BOOKMARK [1][-]{section.5}{Data Collection and Processing}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Collection}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Cleaning}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.3}{Preparation}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Experiments}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{Experimental Setup: RankFromSets}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{Experimental Setup: BERT}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.3}{Quantitative Evaluation}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{Discussion}{}% 20
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 21
+\BOOKMARK [1][-]{appendix.A}{Crawling Scripts}{}% 22
+\BOOKMARK [2][-]{subsection.A.1}{Longform.org Crawling Script}{appendix.A}% 23
+\BOOKMARK [2][-]{subsection.A.2}{Vox Crawling Script}{appendix.A}% 24
+\BOOKMARK [1][-]{appendix.B}{Scraping Scripts}{}% 25
+\BOOKMARK [2][-]{subsection.B.1}{Vanilla Scraping Script}{appendix.B}% 26
+\BOOKMARK [1][-]{appendix.C}{Data Processing}{}% 27
+\BOOKMARK [2][-]{subsection.C.1}{Data Mapping}{appendix.C}% 28
+\BOOKMARK [1][-]{appendix.D}{Data Distribution}{}% 29
+\BOOKMARK [1][-]{appendix.E}{Permission Email}{}% 30
+\BOOKMARK [2][-]{subsection.E.1}{Email Sent to Mr. Uri Bram of The Browser}{appendix.E}% 31
+\BOOKMARK [2][-]{subsection.E.2}{Permission Received from Mr. Uri Bram of The Browser}{appendix.E}% 32

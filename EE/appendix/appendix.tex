@@ -1,0 +1,23 @@
+\section{Crawling Scripts}
+\label{appendix:crawling}
+A few sample crawling scripts that were utilized have been included.
+\input{appendix/crawlers}
+
+\section{Scraping Scripts}
+\label{appendix:scraping}
+The majority of the scraping utilized the same code for all sources, in contrast to the crawling scripts, which were based on the specific HTML layout of the websites.
+\input{appendix/scraping}
+
+\section{Data Processing}
+\label{appendix:processing}
+I created an Articles class that made dataset handling easy. It includes a built-in mapping function, in addition to other methods that were utilized in the rest of the exeperiment.
+\input{appendix/processing}
+
+\section{Data Distribution}
+\label{appendix:data-info}
+The scraped data was converted into train, test, validation sets through a $70\%, 15\%, 15\%$ split. The fake-news corpus was then added only to the validation and test sets, making them much larger and negative heavy.
+\input{appendix/data-info}
+
+\section{Permission Email}
+\label{appendix:permission}
+\input{appendix/permissions}

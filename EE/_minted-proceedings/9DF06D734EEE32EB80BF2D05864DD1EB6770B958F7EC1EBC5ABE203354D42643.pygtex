@@ -1,0 +1,81 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{tokenizers} \PYG{k+kn}{import} \PYG{n}{BertWordPieceTokenizer}
+\PYG{k+kn}{import} \PYG{n+nn}{torch}
+\PYG{k+kn}{import} \PYG{n+nn}{ujson} \PYG{k}{as} \PYG{n+nn}{json}
+\PYG{k+kn}{import} \PYG{n+nn}{collections}
+\PYG{k+kn}{from} \PYG{n+nn}{datetime} \PYG{k+kn}{import} \PYG{n}{datetime}\PYG{p}{,} \PYG{n}{timedelta}
+\PYG{k+kn}{from} \PYG{n+nn}{dateutil} \PYG{k+kn}{import} \PYG{n}{parser}
+
+\PYG{n}{tokenizer} \PYG{o}{=} \PYG{n}{BertWordPieceTokenizer}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}bert\PYGZhy{}base\PYGZhy{}uncased.txt\PYGZdq{}}\PYG{p}{,} \PYG{n}{lowercase}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} define Articles dataset class for easy sampling, iteration, and weight creating}
+\PYG{k}{class} \PYG{n+nc}{Articles}\PYG{p}{(}\PYG{n}{torch}\PYG{o}{.}\PYG{n}{utils}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{Dataset}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{json\PYGZus{}file}\PYG{p}{,} \PYG{n}{index\PYGZus{}file}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+        \PYG{n+nb}{super}\PYG{p}{()}\PYG{o}{.}\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{()}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{json\PYGZus{}file}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}r\PYGZdq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{data\PYGZus{}file}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples} \PYG{o}{=} \PYG{n}{json}\PYG{o}{.}\PYG{n}{loads}\PYG{p}{(}\PYG{n}{data\PYGZus{}file}\PYG{o}{.}\PYG{n}{read}\PYG{p}{())}
+
+        \PYG{k}{if} \PYG{n}{index\PYGZus{}file} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}
+            \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{index\PYGZus{}file}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}r\PYGZdq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{file}\PYG{p}{:}
+                \PYG{n}{indices} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{index}\PYG{o}{.}\PYG{n}{rstrip}\PYG{p}{())} \PYG{k}{for} \PYG{n}{index} \PYG{o+ow}{in} \PYG{n}{file}\PYG{o}{.}\PYG{n}{readlines}\PYG{p}{()]}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{indices}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}getitem\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{idx}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}len\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{create\PYGZus{}positive\PYGZus{}sampler}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{target\PYGZus{}publication}\PYG{p}{):}
+        \PYG{n}{prob} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{))}
+        \PYG{k}{for} \PYG{n}{idx}\PYG{p}{,} \PYG{n}{example} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{]} \PYG{o}{==} \PYG{n}{target\PYGZus{}publication}\PYG{p}{:}
+                \PYG{n}{prob}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}
+        \PYG{k}{return} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{utils}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{WeightedRandomSampler}\PYG{p}{(}
+            \PYG{n}{weights}\PYG{o}{=}\PYG{n}{prob}\PYG{p}{,} \PYG{n}{num\PYGZus{}samples}\PYG{o}{=}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{),} \PYG{n}{replacement}\PYG{o}{=}\PYG{k+kc}{True}
+        \PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{create\PYGZus{}negative\PYGZus{}sampler}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{target\PYGZus{}publication}\PYG{p}{):}
+        \PYG{n}{prob} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{))}
+        \PYG{k}{for} \PYG{n}{idx}\PYG{p}{,} \PYG{n}{example} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{target\PYGZus{}publication}\PYG{p}{:}
+                \PYG{n}{prob}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}
+        \PYG{k}{return} \PYG{n}{torch}\PYG{o}{.}\PYG{n}{utils}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{WeightedRandomSampler}\PYG{p}{(}
+            \PYG{n}{weights}\PYG{o}{=}\PYG{n}{prob}\PYG{p}{,} \PYG{n}{num\PYGZus{}samples}\PYG{o}{=}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{),} \PYG{n}{replacement}\PYG{o}{=}\PYG{k+kc}{True}
+        \PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{map\PYGZus{}items}\PYG{p}{(}
+        \PYG{n+nb+bp}{self}\PYG{p}{,}
+        \PYG{n}{tokenizer}\PYG{p}{,}
+        \PYG{n}{url\PYGZus{}to\PYGZus{}id}\PYG{p}{,}
+        \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{p}{,}
+        \PYG{n+nb}{filter}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,}
+        \PYG{n}{min\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+        \PYG{n}{day\PYGZus{}range}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{,}
+    \PYG{p}{):}
+        \PYG{n}{min\PYGZus{}length\PYGZus{}articles} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{k}{for} \PYG{n}{idx}\PYG{p}{,} \PYG{n}{example} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{):}
+            \PYG{n}{encoded} \PYG{o}{=} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n}{encode}\PYG{p}{(}\PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{],} \PYG{n}{add\PYGZus{}special\PYGZus{}tokens}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}\PYG{o}{.}\PYG{n}{ids}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{encoded}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{url\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}
+                \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{],} \PYG{n}{url\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}miscellaneous\PYGZdq{}}\PYG{p}{)}
+            \PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}
+                \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{],} \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}miscellaneous\PYGZdq{}}\PYG{p}{)}
+            \PYG{p}{)}
+            \PYG{k}{if} \PYG{n+nb}{filter}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n}{day\PYGZus{}range} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}
+                    \PYG{n}{dated} \PYG{o}{=} \PYG{n}{parser}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}date\PYGZdq{}}\PYG{p}{])}
+                    \PYG{n}{now} \PYG{o}{=} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{now}\PYG{p}{()}
+                    \PYG{n}{last\PYGZus{}month} \PYG{o}{=} \PYG{n}{now} \PYG{o}{\PYGZhy{}} \PYG{n}{timedelta}\PYG{p}{(}\PYG{n}{days}\PYG{o}{=}\PYG{n}{day\PYGZus{}range}\PYG{p}{)}
+                    \PYG{k}{if} \PYG{p}{(}
+                        \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n}{min\PYGZus{}length}
+                        \PYG{o+ow}{and} \PYG{n}{last\PYGZus{}month} \PYG{o}{\PYGZlt{}=} \PYG{n}{dated} \PYG{o}{\PYGZlt{}=} \PYG{n}{now}
+                    \PYG{p}{):}
+                        \PYG{n}{min\PYGZus{}length\PYGZus{}articles}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{])}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n}{min\PYGZus{}length}\PYG{p}{:}
+                        \PYG{n}{min\PYGZus{}length\PYGZus{}articles}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{])}
+        \PYG{k}{return} \PYG{n}{min\PYGZus{}length\PYGZus{}articles}
+\end{Verbatim}

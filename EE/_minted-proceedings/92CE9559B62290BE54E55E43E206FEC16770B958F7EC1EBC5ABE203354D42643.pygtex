@@ -1,0 +1,67 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{json}
+\PYG{k+kn}{from} \PYG{n+nn}{dataclasses} \PYG{k+kn}{import} \PYG{n}{dataclass}\PYG{p}{,} \PYG{n}{field}
+\PYG{k+kn}{from} \PYG{n+nn}{dataclasses\PYGZus{}json} \PYG{k+kn}{import} \PYG{n}{dataclass\PYGZus{}json}
+\PYG{k+kn}{from} \PYG{n+nn}{datetime} \PYG{k+kn}{import} \PYG{n}{datetime}
+\PYG{k+kn}{from} \PYG{n+nn}{newspaper} \PYG{k+kn}{import} \PYG{n}{Article}
+\PYG{k+kn}{from} \PYG{n+nn}{bs4} \PYG{k+kn}{import} \PYG{n}{BeautifulSoup}
+\PYG{k+kn}{from} \PYG{n+nn}{typing} \PYG{k+kn}{import} \PYG{n}{List}
+\PYG{k+kn}{from} \PYG{n+nn}{queue} \PYG{k+kn}{import} \PYG{n}{Queue}
+\PYG{k+kn}{from} \PYG{n+nn}{threading} \PYG{k+kn}{import} \PYG{n}{Thread}
+
+\PYG{n+nd}{@dataclass\PYGZus{}json}
+\PYG{n+nd}{@dataclass}
+\PYG{k}{class} \PYG{n+nc}{LongformArticle}\PYG{p}{:}
+    \PYG{n}{title}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{text}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{url}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{source}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+
+\PYG{k}{class} \PYG{n+nc}{WriteThread}\PYG{p}{(}\PYG{n}{Thread}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{queue}\PYG{p}{:} \PYG{n}{Queue}\PYG{p}{,} \PYG{o}{*}\PYG{n}{args}\PYG{p}{,} \PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{):}
+        \PYG{n+nb}{super}\PYG{p}{()}\PYG{o}{.}\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{,} \PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{queue} \PYG{o}{=} \PYG{n}{queue}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{OUTPUT\PYGZus{}FILE}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{output\PYGZus{}file}\PYG{p}{:}
+            \PYG{n}{output\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}[}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+            \PYG{n}{first\PYGZus{}entry} \PYG{o}{=} \PYG{k+kc}{True}
+            \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+                \PYG{n}{article} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{queue}\PYG{o}{.}\PYG{n}{get}\PYG{p}{()}
+                \PYG{k}{if} \PYG{n}{article} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+                    \PYG{n}{output\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{]\PYGZdq{}}\PYG{p}{)}
+                    \PYG{k}{break}
+                \PYG{n}{article\PYGZus{}json} \PYG{o}{=} \PYG{n}{article}\PYG{o}{.}\PYG{n}{to\PYGZus{}json}\PYG{p}{(}\PYG{n}{indent}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+                \PYG{k}{if} \PYG{n}{first\PYGZus{}entry}\PYG{p}{:}
+                    \PYG{n}{first\PYGZus{}entry} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{output\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{},}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+                    \PYG{n}{output\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{article\PYGZus{}json}\PYG{p}{)}
+
+
+\PYG{k}{class} \PYG{n+nc}{ScrapeThread}\PYG{p}{(}\PYG{n}{Thread}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{urls}\PYG{p}{,} \PYG{n}{queue}\PYG{p}{:} \PYG{n}{Queue}\PYG{p}{,} \PYG{o}{*}\PYG{n}{args}\PYG{p}{,} \PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{):}
+        \PYG{n+nb}{super}\PYG{p}{()}\PYG{o}{.}\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{,} \PYG{o}{**}\PYG{n}{kwargs}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{urls} \PYG{o}{=} \PYG{n}{urls}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{queue} \PYG{o}{=} \PYG{n}{queue}
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{scrape}\PYG{p}{(}\PYG{n}{url}\PYG{p}{):}
+        \PYG{n}{article} \PYG{o}{=} \PYG{n}{Article}\PYG{p}{(}\PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}url\PYGZsq{}}\PYG{p}{])}
+        \PYG{n}{article}\PYG{o}{.}\PYG{n}{download}\PYG{p}{()}
+        \PYG{n}{article}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{()}
+        \PYG{n}{soup} \PYG{o}{=} \PYG{n}{BeautifulSoup}\PYG{p}{(}\PYG{n}{article}\PYG{o}{.}\PYG{n}{html}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}lxml\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{ga} \PYG{o}{=} \PYG{n}{LongformArticle}\PYG{p}{()}
+        \PYG{n}{ga}\PYG{o}{.}\PYG{n}{url} \PYG{o}{=} \PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}url\PYGZsq{}}\PYG{p}{]}
+        \PYG{n}{ga}\PYG{o}{.}\PYG{n}{title} \PYG{o}{=} \PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}title\PYGZsq{}}\PYG{p}{]}
+        \PYG{n}{ga}\PYG{o}{.}\PYG{n}{text} \PYG{o}{=} \PYG{n}{article}\PYG{o}{.}\PYG{n}{text}
+        \PYG{n}{ga}\PYG{o}{.}\PYG{n}{source} \PYG{o}{=} \PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}source\PYGZsq{}}\PYG{p}{]}
+        \PYG{k}{return} \PYG{n}{ga}
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{for} \PYG{n}{url} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{urls}\PYG{p}{:}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}scraping }\PYG{l+s+si}{\PYGZob{}url[\PYGZsq{}url\PYGZsq{}]\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{article} \PYG{o}{=} \PYG{n}{ScrapeThread}\PYG{o}{.}\PYG{n}{scrape}\PYG{p}{(}\PYG{n}{url}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{queue}\PYG{o}{.}\PYG{n}{put}\PYG{p}{(}\PYG{n}{article}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{Exception} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Best effort}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}ScrapeThread Exception: }\PYG{l+s+si}{\PYGZob{}e\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
