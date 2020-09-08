@@ -78,12 +78,12 @@
 \abx@aux@segm{0}{0}{hochreiter1997long}
 \abx@aux@cite{transformers:}
 \abx@aux@segm{0}{0}{transformers:}
+\abx@aux@cite{hochreiter1997long}
+\abx@aux@segm{0}{0}{hochreiter1997long}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces RNN sequencing example (displays sequential input handling and state updating) \relax }}{9}{figure.caption.3}\protected@file@percent }
 \newlabel{fig:rnn}{{2}{9}{RNN sequencing example (displays sequential input handling and state updating) \relax }{figure.caption.3}{}}
 \newlabel{fig:rnn@cref}{{[figure][2][]2}{[1][9][]9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Encoders}{9}{subsubsection.3.3.1}\protected@file@percent }
-\abx@aux@cite{hochreiter1997long}
-\abx@aux@segm{0}{0}{hochreiter1997long}
 \abx@aux@cite{devlin2019bert:}
 \abx@aux@segm{0}{0}{devlin2019bert:}
 \abx@aux@cite{alammar_2018}
@@ -94,60 +94,60 @@
 \abx@aux@segm{0}{0}{karim_2019}
 \abx@aux@cite{karim_2019}
 \abx@aux@segm{0}{0}{karim_2019}
+\abx@aux@cite{bengio_goodfellow_courville_2017}
+\abx@aux@segm{0}{0}{bengio_goodfellow_courville_2017}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The basic addition of positional encodings to the input vectors before being fed to the model\nobreakspace  {}\parencite {alammar_2018}.) \relax }}{10}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:positional_encodings}{{3}{10}{The basic addition of positional encodings to the input vectors before being fed to the model~\parencite {alammar_2018}.) \relax }{figure.caption.4}{}}
 \newlabel{fig:positional_encodings@cref}{{[figure][3][]3}{[1][10][]10}}
-\abx@aux@cite{bengio_goodfellow_courville_2017}
-\abx@aux@segm{0}{0}{bengio_goodfellow_courville_2017}
+\newlabel{eq:softmax}{{4}{10}{Encoders}{equation.3.4}{}}
+\newlabel{eq:softmax@cref}{{[equation][4][]4}{[1][10][]10}}
 \abx@aux@cite{karim_2019}
 \abx@aux@segm{0}{0}{karim_2019}
 \abx@aux@cite{karim_2019}
 \abx@aux@segm{0}{0}{karim_2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Initial score generation for first token by taking a dot-product between the query vector and the key vectors for each token\nobreakspace  {}\parencite {karim_2019}.) \relax }}{11}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:first_encoder_step}{{4}{11}{Initial score generation for first token by taking a dot-product between the query vector and the key vectors for each token~\parencite {karim_2019}.) \relax }{figure.caption.5}{}}
-\newlabel{fig:first_encoder_step@cref}{{[figure][4][]4}{[1][10][]11}}
-\newlabel{eq:softmax}{{4}{11}{Encoders}{equation.3.4}{}}
-\newlabel{eq:softmax@cref}{{[equation][4][]4}{[1][10][]11}}
 \abx@aux@cite{transformers:}
 \abx@aux@segm{0}{0}{transformers:}
 \abx@aux@cite{devlin2019bert:}
 \abx@aux@segm{0}{0}{devlin2019bert:}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The SoftMax function is applied to the initial score, then multiplied with the value vectors. The results are then summed to generate a final output for the first token.\nobreakspace  {}\parencite {karim_2019}. \relax }}{12}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:second_encoder_step}{{5}{12}{The SoftMax function is applied to the initial score, then multiplied with the value vectors. The results are then summed to generate a final output for the first token.~\parencite {karim_2019}. \relax }{figure.caption.6}{}}
-\newlabel{fig:second_encoder_step@cref}{{[figure][5][]5}{[1][11][]12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Initial score generation for first token by taking a dot-product between the query vector and the key vectors for each token\nobreakspace  {}\parencite {karim_2019}.) \relax }}{11}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:first_encoder_step}{{4}{11}{Initial score generation for first token by taking a dot-product between the query vector and the key vectors for each token~\parencite {karim_2019}.) \relax }{figure.caption.5}{}}
+\newlabel{fig:first_encoder_step@cref}{{[figure][4][]4}{[1][10][]11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The SoftMax function is applied to the initial score, then multiplied with the value vectors. The results are then summed to generate a final output for the first token.\nobreakspace  {}\parencite {karim_2019}. \relax }}{11}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:second_encoder_step}{{5}{11}{The SoftMax function is applied to the initial score, then multiplied with the value vectors. The results are then summed to generate a final output for the first token.~\parencite {karim_2019}. \relax }{figure.caption.6}{}}
+\newlabel{fig:second_encoder_step@cref}{{[figure][5][]5}{[1][11][]11}}
 \abx@aux@cite{transformers:}
 \abx@aux@segm{0}{0}{transformers:}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The outputs are concatenated as above then multiplied with the weighted matrix that is updated throughout training to get a final output with a 768 long vector for each token. \relax }}{13}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:multi_head_attention}{{6}{13}{The outputs are concatenated as above then multiplied with the weighted matrix that is updated throughout training to get a final output with a 768 long vector for each token. \relax }{figure.caption.7}{}}
-\newlabel{fig:multi_head_attention@cref}{{[figure][6][]6}{[1][12][]13}}
-\newlabel{eq:attention}{{5}{13}{Encoders}{equation.3.5}{}}
-\newlabel{eq:attention@cref}{{[equation][5][]5}{[1][13][]13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The outputs are concatenated as above then multiplied with the weighted matrix that is updated throughout training to get a final output with a 768 long vector for each token. \relax }}{12}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:multi_head_attention}{{6}{12}{The outputs are concatenated as above then multiplied with the weighted matrix that is updated throughout training to get a final output with a 768 long vector for each token. \relax }{figure.caption.7}{}}
+\newlabel{fig:multi_head_attention@cref}{{[figure][6][]6}{[1][12][]12}}
+\newlabel{eq:attention}{{5}{12}{Encoders}{equation.3.5}{}}
+\newlabel{eq:attention@cref}{{[equation][5][]5}{[1][12][]12}}
 \abx@aux@cite{lecun2015deep}
 \abx@aux@segm{0}{0}{lecun2015deep}
 \abx@aux@cite{sun2019finetune}
 \abx@aux@segm{0}{0}{sun2019finetune}
 \abx@aux@cite{devlin2019bert:}
 \abx@aux@segm{0}{0}{devlin2019bert:}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A sample fully-connected feed forward network with a hidden layer\relax }}{14}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:neural-network}{{7}{14}{A sample fully-connected feed forward network with a hidden layer\relax }{figure.caption.8}{}}
-\newlabel{fig:neural-network@cref}{{[figure][7][]7}{[1][13][]14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}General Working}{14}{subsubsection.3.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A sample fully-connected feed forward network with a hidden layer\relax }}{13}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:neural-network}{{7}{13}{A sample fully-connected feed forward network with a hidden layer\relax }{figure.caption.8}{}}
+\newlabel{fig:neural-network@cref}{{[figure][7][]7}{[1][13][]13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}General Working}{13}{subsubsection.3.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Hypothesis/Applied Theory}{14}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Data Collection and Processing}{15}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Collection}{15}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Data Collection and Processing}{14}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Collection}{14}{subsection.5.1}\protected@file@percent }
 \abx@aux@cite{alammar_2019}
 \abx@aux@segm{0}{0}{alammar_2019}
 \abx@aux@cite{alammar_2019}
 \abx@aux@segm{0}{0}{alammar_2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Cleaning}{16}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Preparation}{16}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Full Scale Tokenization Example, where an English sentence is converted to tokens. \nobreakspace  {}\parencite {alammar_2019} \relax }}{16}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:tokenization}{{8}{16}{Full Scale Tokenization Example, where an English sentence is converted to tokens. ~\parencite {alammar_2019} \relax }{figure.caption.9}{}}
-\newlabel{fig:tokenization@cref}{{[figure][8][]8}{[1][16][]16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Cleaning}{15}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Preparation}{15}{subsection.5.3}\protected@file@percent }
 \abx@aux@cite{tieleman2012lecture}
 \abx@aux@segm{0}{0}{tieleman2012lecture}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Experiments}{17}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Experimental Setup: RankFromSets}{17}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Full Scale Tokenization Example, where an English sentence is converted to tokens. \nobreakspace  {}\parencite {alammar_2019} \relax }}{16}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:tokenization}{{8}{16}{Full Scale Tokenization Example, where an English sentence is converted to tokens. ~\parencite {alammar_2019} \relax }{figure.caption.9}{}}
+\newlabel{fig:tokenization@cref}{{[figure][8][]8}{[1][15][]16}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Experiments}{16}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Experimental Setup: RankFromSets}{16}{subsection.6.1}\protected@file@percent }
 \abx@aux@cite{devlin2019bert:}
 \abx@aux@segm{0}{0}{devlin2019bert:}
 \abx@aux@cite{devlin2019bert:}
@@ -156,45 +156,49 @@
 \abx@aux@segm{0}{0}{wolf2019huggingfaces}
 \abx@aux@cite{wolf2019huggingfaces}
 \abx@aux@segm{0}{0}{wolf2019huggingfaces}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Experimental Setup: BERT}{18}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Experimental Setup: BERT}{17}{subsection.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Quantitative Evaluation}{18}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \gls {rfs} outperforms \acrshort {bert} in an offline evaluation on the test dataset when predicting which articles would be featured at The Browser\relax }}{18}{table.caption.10}\protected@file@percent }
+\newlabel{tab:recall}{{1}{18}{\gls {rfs} outperforms \acrshort {bert} in an offline evaluation on the test dataset when predicting which articles would be featured at The Browser\relax }{table.caption.10}{}}
+\newlabel{tab:recall@cref}{{[table][1][]1}{[1][18][]18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \acrshort {rfs} achieves better performance faster than \acrshort {bert} in terms of validation recall during training.\relax }}{18}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:training-recall}{{9}{18}{\acrshort {rfs} achieves better performance faster than \acrshort {bert} in terms of validation recall during training.\relax }{figure.caption.11}{}}
+\newlabel{fig:training-recall@cref}{{[figure][9][]9}{[1][18][]18}}
 \abx@aux@cite{domingos2012few}
 \abx@aux@segm{0}{0}{domingos2012few}
 \abx@aux@cite{domingos2012few}
 \abx@aux@segm{0}{0}{domingos2012few}
 \abx@aux@cite{gonzlezcarvajal2020comparing}
 \abx@aux@segm{0}{0}{gonzlezcarvajal2020comparing}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \gls {rfs} outperforms \acrshort {bert} in an offline evaluation on the test dataset when predicting which articles would be featured at The Browser\relax }}{19}{table.caption.10}\protected@file@percent }
-\newlabel{tab:recall}{{1}{19}{\gls {rfs} outperforms \acrshort {bert} in an offline evaluation on the test dataset when predicting which articles would be featured at The Browser\relax }{table.caption.10}{}}
-\newlabel{tab:recall@cref}{{[table][1][]1}{[1][18][]19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \acrshort {rfs} achieves better performance faster than \acrshort {bert} in terms of validation recall during training.\relax }}{19}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:training-recall}{{9}{19}{\acrshort {rfs} achieves better performance faster than \acrshort {bert} in terms of validation recall during training.\relax }{figure.caption.11}{}}
-\newlabel{fig:training-recall@cref}{{[figure][9][]9}{[1][18][]19}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{19}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{20}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}Crawling Scripts}{23}{appendix.A}\protected@file@percent }
-\newlabel{appendix:crawling}{{A}{23}{Crawling Scripts}{appendix.A}{}}
-\newlabel{appendix:crawling@cref}{{[appendix][1][2147483647]A}{[1][23][]23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Longform.org Crawling Script}{23}{subsection.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Vox Crawling Script}{24}{subsection.A.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Scraping Scripts}{26}{appendix.B}\protected@file@percent }
-\newlabel{appendix:scraping}{{B}{26}{Scraping Scripts}{appendix.B}{}}
-\newlabel{appendix:scraping@cref}{{[appendix][2][2147483647]B}{[1][26][]26}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Vanilla Scraping Script}{27}{subsection.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {C}Data Processing}{28}{appendix.C}\protected@file@percent }
-\newlabel{appendix:processing}{{C}{28}{Data Processing}{appendix.C}{}}
-\newlabel{appendix:processing@cref}{{[appendix][3][2147483647]C}{[1][28][]28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Data Mapping}{29}{subsection.C.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {D}Data Distribution}{31}{appendix.D}\protected@file@percent }
-\newlabel{appendix:data-info}{{D}{31}{Data Distribution}{appendix.D}{}}
-\newlabel{appendix:data-info@cref}{{[appendix][4][2147483647]D}{[1][31][]31}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset Breakdowns for training, test, and validation sets.\relax }}{31}{table.caption.13}\protected@file@percent }
-\newlabel{tab:data-breakdown}{{2}{31}{Dataset Breakdowns for training, test, and validation sets.\relax }{table.caption.13}{}}
-\newlabel{tab:data-breakdown@cref}{{[table][2][2147483647]2}{[1][31][]31}}
-\@writefile{toc}{\contentsline {section}{\numberline {E}Permission Email}{31}{appendix.E}\protected@file@percent }
-\newlabel{appendix:permission}{{E}{31}{Permission Email}{appendix.E}{}}
-\newlabel{appendix:permission@cref}{{[appendix][5][2147483647]E}{[1][31][]31}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Email Sent to Mr. Uri Bram of The Browser}{31}{subsection.E.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{19}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Code Base}{22}{appendix.A}\protected@file@percent }
+\newlabel{appendix:code-base}{{A}{22}{Code Base}{appendix.A}{}}
+\newlabel{appendix:code-base@cref}{{[appendix][1][2147483647]A}{[1][22][]22}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Crawling Scripts}{22}{appendix.B}\protected@file@percent }
+\newlabel{appendix:crawling}{{B}{22}{Crawling Scripts}{appendix.B}{}}
+\newlabel{appendix:crawling@cref}{{[appendix][2][2147483647]B}{[1][22][]22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Longform.org Crawling Script}{22}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Vox Crawling Script}{24}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Scraping Scripts}{26}{appendix.C}\protected@file@percent }
+\newlabel{appendix:scraping}{{C}{26}{Scraping Scripts}{appendix.C}{}}
+\newlabel{appendix:scraping@cref}{{[appendix][3][2147483647]C}{[1][26][]26}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Vanilla Scraping Script}{26}{subsection.C.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Selenium Scraping Script}{28}{subsection.C.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Data Processing}{30}{appendix.D}\protected@file@percent }
+\newlabel{appendix:processing}{{D}{30}{Data Processing}{appendix.D}{}}
+\newlabel{appendix:processing@cref}{{[appendix][4][2147483647]D}{[1][30][]30}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Data Distribution}{33}{appendix.E}\protected@file@percent }
+\newlabel{appendix:data-info}{{E}{33}{Data Distribution}{appendix.E}{}}
+\newlabel{appendix:data-info@cref}{{[appendix][5][2147483647]E}{[1][33][]33}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset Breakdowns for training, test, and validation sets.\relax }}{33}{table.caption.13}\protected@file@percent }
+\newlabel{tab:data-breakdown}{{2}{33}{Dataset Breakdowns for training, test, and validation sets.\relax }{table.caption.13}{}}
+\newlabel{tab:data-breakdown@cref}{{[table][2][2147483647]2}{[1][33][]33}}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Permission Email}{33}{appendix.F}\protected@file@percent }
+\newlabel{appendix:permission}{{F}{33}{Permission Email}{appendix.F}{}}
+\newlabel{appendix:permission@cref}{{[appendix][6][2147483647]F}{[1][33][]33}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.1}Email Sent to Mr. Uri Bram of The Browser}{33}{subsection.F.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.2}Permission Received from Mr. Uri Bram of The Browser}{33}{subsection.F.2}\protected@file@percent }
 \gdef\minted@oldcachelist{,
   default-pyg-prefix.pygstyle,
   default.pygstyle,
@@ -203,8 +207,9 @@
   746B6D0F21D82F42191F8353E8AAD9B76770B958F7EC1EBC5ABE203354D42643.pygtex,
   3606EACCF8B4E36AF9D0566D22B578326770B958F7EC1EBC5ABE203354D42643.pygtex,
   FA8459823E5BF3E424B843E1E6226B6C6770B958F7EC1EBC5ABE203354D42643.pygtex,
-  92CE9559B62290BE54E55E43E206FEC16770B958F7EC1EBC5ABE203354D42643.pygtex,
-  9DF06D734EEE32EB80BF2D05864DD1EB6770B958F7EC1EBC5ABE203354D42643.pygtex}
+  63AEA3590C03B4E0F10B9BBB2862C0936770B958F7EC1EBC5ABE203354D42643.pygtex,
+  DC102B64977B42868E11A15E365867F36770B958F7EC1EBC5ABE203354D42643.pygtex,
+  5B07F4CC34F479AB7DFA036CEB6F16F76770B958F7EC1EBC5ABE203354D42643.pygtex}
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{alammar_2019}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{alammar_2018}{nty/global//global/global}
@@ -226,4 +231,3 @@
 \abx@aux@defaultrefcontext{0}{tieleman2012lecture}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{transformers:}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{wolf2019huggingfaces}{nty/global//global/global}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Permission Received from Mr. Uri Bram of The Browser}{32}{subsection.E.2}\protected@file@percent }

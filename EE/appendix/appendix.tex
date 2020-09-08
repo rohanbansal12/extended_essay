@@ -1,3 +1,7 @@
+\section{Code Base}
+\label{appendix:code-base}
+All code utilized in this project can be found at https://github.com/rohanbansal12/extended\_essay. Both approaches, \acrlong{rfs} and \acrshort{bert}, have their own folders in the repository. Crawling/Scraping scripts can be found in the data-collection folder. The files used to build this paper in \LaTeX\ are found in the EE folder. I have included certain examples and relevant scripts throughout the paper and appendices. 
+
 \section{Crawling Scripts}
 \label{appendix:crawling}
 A few sample crawling scripts that were utilized have been included.
@@ -5,17 +9,17 @@ A few sample crawling scripts that were utilized have been included.
 
 \section{Scraping Scripts}
 \label{appendix:scraping}
-The majority of the scraping utilized the same code for all sources, in contrast to the crawling scripts, which were based on the specific HTML layout of the websites.
+The majority of the scraping utilized the same code for all sources, in contrast to the crawling scripts, which were based on the specific HTML layout of the websites. I did utilize an alternative method for difficult to scrape sites, and both are presented here.
 \input{appendix/scraping}
 
 \section{Data Processing}
 \label{appendix:processing}
-I created an Articles class that made dataset handling easy. It includes a built-in mapping function, in addition to other methods that were utilized in the rest of the exeperiment.
+I created an Articles class that made dataset handling easy. It includes a built-in mapping function (map\_items), in addition to other methods, such as sampler creations, that were utilized in the rest of the experiment.
 \input{appendix/processing}
 
 \section{Data Distribution}
 \label{appendix:data-info}
-The scraped data was converted into train, test, validation sets through a $70\%, 15\%, 15\%$ split. The fake-news corpus was then added only to the validation and test sets, making them much larger and negative heavy.
+The scraped data was converted into train, test, validation sets through a $70\%, 15\%, 15\%$ split. The fake-news corpus was then added only to the validation and test sets, making them much larger and more negative heavy.
 \input{appendix/data-info}
 
 \section{Permission Email}

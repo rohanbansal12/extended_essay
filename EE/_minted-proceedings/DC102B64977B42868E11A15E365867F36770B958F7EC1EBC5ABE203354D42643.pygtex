@@ -1,0 +1,96 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k}{as} \PYG{n+nn}{pd}
+\PYG{k+kn}{from} \PYG{n+nn}{dataclasses} \PYG{k+kn}{import} \PYG{n}{dataclass}\PYG{p}{,} \PYG{n}{field}
+\PYG{k+kn}{from} \PYG{n+nn}{dataclasses\PYGZus{}json} \PYG{k+kn}{import} \PYG{n}{dataclass\PYGZus{}json}
+\PYG{k+kn}{from} \PYG{n+nn}{newspaper} \PYG{k+kn}{import} \PYG{n}{Article}
+\PYG{k+kn}{from} \PYG{n+nn}{bs4} \PYG{k+kn}{import} \PYG{n}{BeautifulSoup}
+\PYG{k+kn}{from} \PYG{n+nn}{selenium} \PYG{k+kn}{import} \PYG{n}{webdriver}
+\PYG{k+kn}{from} \PYG{n+nn}{selenium.webdriver.common.keys} \PYG{k+kn}{import} \PYG{n}{Keys}
+\PYG{k+kn}{from} \PYG{n+nn}{selenium.webdriver.chrome.options} \PYG{k+kn}{import} \PYG{n}{Options}
+
+\PYG{n+nd}{@dataclass\PYGZus{}json}
+\PYG{n+nd}{@dataclass}
+\PYG{k}{class} \PYG{n+nc}{ScrapedArticle}\PYG{p}{:}
+    \PYG{n}{title}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{text}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{url}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+    \PYG{n}{source}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+
+\PYG{c+c1}{\PYGZsh{} get necessary capabilites and options for selenium Chrome webdriver}
+\PYG{k}{def} \PYG{n+nf}{generate\PYGZus{}driver\PYGZus{}settings}\PYG{p}{(}\PYG{n}{proxy}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} generate chrome options for proper user\PYGZhy{}agent}
+    \PYG{n}{chrome\PYGZus{}options} \PYG{o}{=} \PYG{n}{Options}\PYG{p}{()}
+    \PYG{n}{chrome\PYGZus{}options}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}headless\PYGZdq{}}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} chrome\PYGZus{}options.add\PYGZus{}argument(\PYGZdq{}\PYGZhy{}\PYGZhy{}no\PYGZhy{}sandbox\PYGZdq{})}
+    \PYG{n}{chrome\PYGZus{}options}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}ignore\PYGZhy{}certificate\PYGZhy{}errors\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{prefs} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.images\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.default\PYGZus{}content\PYGZus{}setting\PYGZus{}values.notifications\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.stylesheets\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.cookies\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.javascript\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.plugins\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.popups\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.geolocation\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}profile.managed\PYGZus{}default\PYGZus{}content\PYGZus{}settings.media\PYGZus{}stream\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{chrome\PYGZus{}options}\PYG{o}{.}\PYG{n}{add\PYGZus{}experimental\PYGZus{}option}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}prefs\PYGZdq{}}\PYG{p}{,} \PYG{n}{prefs}\PYG{p}{)}
+    \PYG{n}{chrome\PYGZus{}options}\PYG{o}{.}\PYG{n}{add\PYGZus{}argument}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}log\PYGZhy{}level=3\PYGZdq{}}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} generate PROXY capabilites}
+    \PYG{n}{capabilites} \PYG{o}{=} \PYG{n}{webdriver}\PYG{o}{.}\PYG{n}{DesiredCapabilities}\PYG{o}{.}\PYG{n}{CHROME}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+    \PYG{n}{capabilites}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}acceptInsecureCerts\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{True}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    capabilites[\PYGZdq{}proxy\PYGZdq{}] = \PYGZob{}}
+\PYG{l+s+sd}{        \PYGZdq{}httpProxy\PYGZdq{}: proxy,}
+\PYG{l+s+sd}{        \PYGZdq{}proxyType\PYGZdq{}: \PYGZdq{}MANUAL\PYGZdq{},}
+\PYG{l+s+sd}{        \PYGZdq{}autodetect\PYGZdq{}: False,}
+\PYG{l+s+sd}{    \PYGZcb{}}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{return} \PYG{n}{chrome\PYGZus{}options}\PYG{p}{,} \PYG{n}{capabilites}
+
+\PYG{c+c1}{\PYGZsh{} basic scrolling function for selenium infinite scroll pages}
+\PYG{k}{def} \PYG{n+nf}{scroll}\PYG{p}{(}\PYG{n}{driver}\PYG{p}{,} \PYG{n}{timeout}\PYG{p}{,} \PYG{n}{count}\PYG{p}{,} \PYG{n}{pixels}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Get scroll height}
+    \PYG{n}{last\PYGZus{}height} \PYG{o}{=} \PYG{n}{driver}\PYG{o}{.}\PYG{n}{execute\PYGZus{}script}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}return document.body.scrollHeight\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{count}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} Scroll down to bottom}
+        \PYG{n}{driver}\PYG{o}{.}\PYG{n}{execute\PYGZus{}script}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}window.scrollTo(0, }\PYG{l+s+si}{\PYGZob{}pixels\PYGZcb{}}\PYG{l+s+s2}{);\PYGZdq{}}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Wait to load page}
+        \PYG{n}{time}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{n}{timeout}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Calculate new scroll height and compare with last scroll height}
+        \PYG{n}{new\PYGZus{}height} \PYG{o}{=} \PYG{n}{driver}\PYG{o}{.}\PYG{n}{execute\PYGZus{}script}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}return document.body.scrollHeight\PYGZdq{}}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n}{new\PYGZus{}height} \PYG{o}{==} \PYG{n}{last\PYGZus{}height}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} If heights are the same it will exit the function}
+            \PYG{k}{break}
+        \PYG{n}{last\PYGZus{}height} \PYG{o}{=} \PYG{n}{new\PYGZus{}height}
+
+\PYG{c+c1}{\PYGZsh{} get chrome\PYGZus{}options and capabilites for selenium}
+\PYG{n}{chrome\PYGZus{}options}\PYG{p}{,} \PYG{n}{capabilites} \PYG{o}{=} \PYG{n}{generate\PYGZus{}driver\PYGZus{}settings}\PYG{p}{(}\PYG{n}{args}\PYG{o}{.}\PYG{n}{proxy}\PYG{p}{)}
+\PYG{n}{driver} \PYG{o}{=} \PYG{n}{webdriver}\PYG{o}{.}\PYG{n}{Chrome}\PYG{p}{(}
+    \PYG{n}{args}\PYG{o}{.}\PYG{n}{chromedriver\PYGZus{}path}\PYG{p}{,} \PYG{n}{options}\PYG{o}{=}\PYG{n}{chrome\PYGZus{}options}\PYG{p}{,}
+\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}entries}\PYG{p}{(}\PYG{n}{links\PYGZus{}df}\PYG{p}{,} \PYG{n}{driver}\PYG{p}{,} \PYG{n}{proxies}\PYG{p}{,} \PYG{n}{headers}\PYG{p}{):}
+    \PYG{k}{for} \PYG{n}{idx}\PYG{p}{,} \PYG{n}{row} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{links\PYGZus{}df}\PYG{o}{.}\PYG{n}{itertuples}\PYG{p}{()):}
+            \PYG{k}{if} \PYG{l+s+s2}{\PYGZdq{}www\PYGZdq{}} \PYG{o+ow}{in} \PYG{n}{row}\PYG{o}{.}\PYG{n}{link\PYGZus{}url}\PYG{p}{:}
+                \PYG{n}{base} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}https://www.\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{row}\PYG{o}{.}\PYG{n}{url}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n}{base} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}https://\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{row}\PYG{o}{.}\PYG{n}{url}\PYG{p}{)}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n}{url} \PYG{o}{=} \PYG{n}{row}\PYG{o}{.}\PYG{n}{link\PYGZus{}url}
+                \PYG{n}{header\PYGZus{}copy} \PYG{o}{=} \PYG{n}{headers}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+                \PYG{n}{driver}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{url}\PYG{p}{)}
+                \PYG{n}{scroll}\PYG{p}{(}\PYG{n}{driver}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{500}\PYG{p}{)}
+                \PYG{n}{content} \PYG{o}{=} \PYG{n}{driver}\PYG{o}{.}\PYG{n}{page\PYGZus{}source}
+                \PYG{n}{soup} \PYG{o}{=} \PYG{n}{BeautifulSoup}\PYG{p}{(}\PYG{n}{content}\PYG{p}{,} \PYG{n}{features}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}html5lib\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{article} \PYG{o}{=} \PYG{n}{Article}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{article}\PYG{o}{.}\PYG{n}{set\PYGZus{}html}\PYG{p}{(}\PYG{n}{content}\PYG{p}{)}
+                \PYG{n}{article}\PYG{o}{.}\PYG{n}{download\PYGZus{}state} \PYG{o}{=} \PYG{l+m+mi}{2}
+                \PYG{n}{article}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{()}
+                \PYG{n}{ga} \PYG{o}{=} \PYG{n}{ScrapedArticle}\PYG{p}{()}
+                \PYG{n}{ga}\PYG{o}{.}\PYG{n}{url} \PYG{o}{=} \PYG{n}{base}
+                \PYG{n}{ga}\PYG{o}{.}\PYG{n}{title} \PYG{o}{=} \PYG{n}{row}\PYG{o}{.}\PYG{n}{title}
+                \PYG{n}{ga}\PYG{o}{.}\PYG{n}{text} \PYG{o}{=} \PYG{n}{article}\PYG{o}{.}\PYG{n}{text}
+                \PYG{n}{ga}\PYG{o}{.}\PYG{n}{source} \PYG{o}{=} \PYG{n}{row}\PYG{o}{.}\PYG{n}{source}
+                \PYG{k}{return} \PYG{n}{ga}
+\end{Verbatim}

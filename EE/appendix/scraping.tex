@@ -1,4 +1,6 @@
 \subsection{Vanilla Scraping Script}
+A Multi-Threaded Scraper that utilizes the simple Requests and Newspaper packages.
+
 \begin{minted}{python}
 import json
 from dataclasses import dataclass, field
@@ -12,7 +14,7 @@ from threading import Thread
 
 @dataclass_json
 @dataclass
-class LongformArticle:
+class ScrapedArticle:
     title: str = ''
     text: str = ''
     url: str = ''
@@ -51,7 +53,7 @@ class ScrapeThread(Thread):
         article.download()
         article.parse()
         soup = BeautifulSoup(article.html, 'lxml')
-        ga = LongformArticle()
+        ga = ScrapedArticle()
         ga.url = url['url']
         ga.title = url['title']
         ga.text = article.text
@@ -65,4 +67,104 @@ class ScrapeThread(Thread):
                 self.queue.put(article)
             except Exception as e: # Best effort
                 print(f'ScrapeThread Exception: {e}')
+\end{minted}
+
+\subsection{Selenium Scraping Script}
+A linear scraper that utilizes Selenium headless Chrome browser and the Newspaper package.
+
+\begin{minted}{python}
+import pandas as pd
+from dataclasses import dataclass, field
+from dataclasses_json import dataclass_json
+from newspaper import Article
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+
+@dataclass_json
+@dataclass
+class ScrapedArticle:
+    title: str = ''
+    text: str = ''
+    url: str = ''
+    source: str = ''
+
+# get necessary capabilites and options for selenium Chrome webdriver
+def generate_driver_settings(proxy):
+    # generate chrome options for proper user-agent
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    prefs = {
+        "profile.managed_default_content_settings.images": 2,
+        "profile.default_content_setting_values.notifications": 2,
+        "profile.managed_default_content_settings.stylesheets": 2,
+        "profile.managed_default_content_settings.cookies": 2,
+        "profile.managed_default_content_settings.javascript": 1,
+        "profile.managed_default_content_settings.plugins": 1,
+        "profile.managed_default_content_settings.popups": 2,
+        "profile.managed_default_content_settings.geolocation": 2,
+        "profile.managed_default_content_settings.media_stream": 2,
+    }
+    chrome_options.add_experimental_option("prefs", prefs)
+    chrome_options.add_argument("--log-level=3")
+    # generate PROXY capabilites
+    capabilites = webdriver.DesiredCapabilities.CHROME.copy()
+    capabilites["acceptInsecureCerts"] = True
+    """
+    capabilites["proxy"] = {
+        "httpProxy": proxy,
+        "proxyType": "MANUAL",
+        "autodetect": False,
+    }
+    """
+    return chrome_options, capabilites
+
+# basic scrolling function for selenium infinite scroll pages
+def scroll(driver, timeout, count, pixels):
+    # Get scroll height
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    for x in range(count):
+        # Scroll down to bottom
+        driver.execute_script(f"window.scrollTo(0, {pixels});")
+        # Wait to load page
+        time.sleep(timeout)
+        # Calculate new scroll height and compare with last scroll height
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            # If heights are the same it will exit the function
+            break
+        last_height = new_height
+
+# get chrome_options and capabilites for selenium
+chrome_options, capabilites = generate_driver_settings(args.proxy)
+driver = webdriver.Chrome(
+    args.chromedriver_path, options=chrome_options,
+)
+
+def get_entries(links_df, driver, proxies, headers):
+    for idx, row in enumerate(links_df.itertuples()):
+            if "www" in row.link_url:
+                base = "https://www." + str(row.url)
+            else:
+                base = "https://" + str(row.url)
+            try:
+                url = row.link_url
+                header_copy = headers.copy()
+                driver.get(url)
+                scroll(driver, 5, 1, 500)
+                content = driver.page_source
+                soup = BeautifulSoup(content, features="html5lib")
+                article = Article("")
+                article.set_html(content)
+                article.download_state = 2
+                article.parse()
+                ga = ScrapedArticle()
+                ga.url = base
+                ga.title = row.title
+                ga.text = article.text
+                ga.source = row.source
+                return ga
 \end{minted}

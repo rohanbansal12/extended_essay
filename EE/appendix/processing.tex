@@ -1,4 +1,3 @@
-\subsection{Data Mapping}
 \begin{minted}{python}
 import numpy as np
 from tokenizers import BertWordPieceTokenizer
@@ -10,7 +9,6 @@ from dateutil import parser
 
 tokenizer = BertWordPieceTokenizer("bert-base-uncased.txt", lowercase=True)
 
-# define Articles dataset class for easy sampling, iteration, and weight creating
 class Articles(torch.utils.data.Dataset):
     def __init__(self, json_file, index_file=None):
         super().__init__()
@@ -57,13 +55,15 @@ class Articles(torch.utils.data.Dataset):
     ):
         min_length_articles = []
         for idx, example in enumerate(self.examples):
-            encoded = tokenizer.encode(example["text"], add_special_tokens=False).ids
+            encoded = tokenizer.encode(example["text"], 
+                                       add_special_tokens=False).ids
             self.examples[idx]["text"] = encoded
             self.examples[idx]["url"] = url_to_id.get(
                 example["url"], url_to_id.get("miscellaneous")
             )
             self.examples[idx]["model_publication"] = publication_to_id.get(
-                example["model_publication"], publication_to_id.get("miscellaneous")
+                example["model_publication"], 
+                publication_to_id.get("miscellaneous")
             )
             if filter:
                 if day_range is not None:

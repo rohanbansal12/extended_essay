@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  6 SEP 2020 13:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  7 SEP 2020 04:08
 entering extended mode
 **./proceedings.tex
 (proceedings.tex
@@ -1441,7 +1441,7 @@ gs.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 ...line {D}Data Distribution}{31}{appendix.D}
+l.30 ...erline {D}Data Processing}{30}{appendix.D}
                                                   % [1])
 \tf@toc=\write7
 \openout7 = `proceedings.toc'.
@@ -1449,7 +1449,7 @@ l.30 ...line {D}Data Distribution}{31}{appendix.D}
  [2]
 (sections/intro.tex) (sections/theory.tex) [3]
 (sections/theory/nlp-fundamentals.tex [4] [5]
-<fig/king-man-woman-queen.png, id=242, 664.4825pt x 223.83624pt>
+<fig/king-man-woman-queen.png, id=248, 664.4825pt x 223.83624pt>
 File: fig/king-man-woman-queen.png Graphic file (type png)
 <use fig/king-man-woman-queen.png>
 Package pdftex.def Info: fig/king-man-woman-queen.png  used on input line 23.
@@ -1475,7 +1475,7 @@ LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <12> not available
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <12> not available
 (Font)              Font shape `T1/txtt/m/sl' tried instead on input line 12.
 )) [8]
-<fig/rnn.png, id=283, 911.68605pt x 314.01315pt>
+<fig/rnn.png, id=289, 911.68605pt x 314.01315pt>
 File: fig/rnn.png Graphic file (type png)
 <use fig/rnn.png>
 Package pdftex.def Info: fig/rnn.png  used on input line 59.
@@ -1490,93 +1490,84 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-[9 <./fig/rnn.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
-<fig/positional_encodings.png, id=297, 1304.875pt x 525.965pt>
+[9 <./fig/rnn.png>]
+<fig/positional_encodings.png, id=303, 1304.875pt x 525.965pt>
 File: fig/positional_encodings.png Graphic file (type png)
 <use fig/positional_encodings.png>
 Package pdftex.def Info: fig/positional_encodings.png  used on input line 79.
 (pdftex.def)             Requested size: 312.00119pt x 125.76067pt.
-<fig/first_encoder_step.jpg, id=301, 558.58687pt x 252.945pt>
+<fig/first_encoder_step.jpg, id=307, 558.58687pt x 252.945pt>
 File: fig/first_encoder_step.jpg Graphic file (type jpg)
 <use fig/first_encoder_step.jpg>
 Package pdftex.def Info: fig/first_encoder_step.jpg  used on input line 89.
 (pdftex.def)             Requested size: 312.00119pt x 141.28928pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10 <./fig/positional_encodings.png>]
-<fig/second_encoder_step.jpg, id=313, 537.50812pt x 298.11375pt>
+<fig/second_encoder_step.jpg, id=320, 537.50812pt x 298.11375pt>
 File: fig/second_encoder_step.jpg Graphic file (type jpg)
 <use fig/second_encoder_step.jpg>
 Package pdftex.def Info: fig/second_encoder_step.jpg  used on input line 105.
 (pdftex.def)             Requested size: 312.00119pt x 173.04256pt.
- [11 <./fig/first_encoder_step.jpg>]
-<fig/multi-head.jpg, id=327, 304.88907pt x 195.73125pt>
+ [11 <./fig/first_encoder_step.jpg> <./fig/second_encoder_step.jpg>]
+<fig/multi-head.jpg, id=334, 304.88907pt x 195.73125pt>
 File: fig/multi-head.jpg Graphic file (type jpg)
 <use fig/multi-head.jpg>
 Package pdftex.def Info: fig/multi-head.jpg  used on input line 115.
 (pdftex.def)             Requested size: 312.00119pt x 200.30325pt.
-
-[12 <./fig/second_encoder_step.jpg>]
-<fig/full_neural.png, id=337, 513.92pt x 370.88562pt>
+ [12 <./fig/multi-head.jpg>]
+<fig/full_neural.png, id=345, 513.92pt x 370.88562pt>
 File: fig/full_neural.png Graphic file (type png)
 <use fig/full_neural.png>
 Package pdftex.def Info: fig/full_neural.png  used on input line 133.
 (pdftex.def)             Requested size: 312.00119pt x 225.1703pt.
- [13 <./fig/multi-head.jpg>]
-(sections/hypothesis.tex [14 <./fig/full_neural.png>]) (sections/processing.tex
-
+ (sections/hypothesis.tex [13 <./fig/full_neural.png>]) (sections/processing.te
+x [14]
 Overfull \hbox (3.63234pt too wide) in paragraph at lines 7--8
 \T1/ptm/m/n/12 The ma-jor-ity of the clean-ing and pro-cess-ing was done via th
 e di-rect crawl-ing/scrap-
  []
 
-[15]
-<fig/tokenization.png, id=371, 1704.3675pt x 920.43875pt>
+<fig/tokenization.png, id=373, 1704.3675pt x 920.43875pt>
 File: fig/tokenization.png Graphic file (type png)
 <use fig/tokenization.png>
 Package pdftex.def Info: fig/tokenization.png  used on input line 14.
 (pdftex.def)             Requested size: 312.00119pt x 168.49481pt.
-) [16 <./fig/tokenization.png>] (sections/experiment.tex
+[15]) (sections/experiment.tex
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/8898F72D2232688CDE12E53507D21E6D6770B958F7EC1EBC5ABE203354
-D42643.pygtex [17])
+D42643.pygtex [16 <./fig/tokenization.png>])
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/746B6D0F21D82F42191F8353E8AAD9B76770B958F7EC1EBC5ABE203354
-D42643.pygtex) (fig/recall.tex
+D42643.pygtex [17]) (fig/recall.tex
 
 Package mathptmx Warning: There are no bold math fonts on input line 9.
 
-)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(fig/training-recall.tex
-<fig/training-recall.pdf, id=399, 1106.04967pt x 432.81763pt>
+) (fig/training-recall.tex
+<fig/training-recall.pdf, id=406, 1106.04967pt x 432.81763pt>
 File: fig/training-recall.pdf Graphic file (type pdf)
 <use fig/training-recall.pdf>
 Package pdftex.def Info: fig/training-recall.pdf  used on input line 4.
 (pdftex.def)             Requested size: 370.49881pt x 144.98323pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)) (sections/discussion.tex [18] [19 <./fig/training-recall.pdf>])
-(sections/conclusion.tex) [20]
+)) (sections/discussion.tex [18 <./fig/training-recall.pdf>]) (sections/conclus
+ion.tex) [19]
 Overfull \hbox (4.77478pt too wide) in paragraph at lines 159--159
 []\T1/ptm/m/n/12 Jaan Al-tosaar, Wes-ley Tansey, and Ra-jesh Ran-ganath. ``Rank
 -From-Sets: Scal-
  []
 
-
+[20]
 Overfull \hbox (87.27188pt too wide) in paragraph at lines 159--159
 []\T1/ptm/m/n/12 Raimi Karim. \T1/ptm/m/it/12 Il-lus-trated: Self-Attention\T1/
 ptm/m/n/12 . Dec. 2019. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : [][]$\T1/txtt/m/n/1
@@ -1596,13 +1587,19 @@ Overfull \hbox (2.44481pt too wide) in paragraph at lines 159--159
 rformance Deep
  []
 
-[21]
+
 Overfull \hbox (10.61913pt too wide) in paragraph at lines 159--159
 []\T1/ptm/m/n/12 Ashish Vaswani et al. ``At-ten-tion Is All You Need''. In: \T1
 /ptm/m/it/12 CoRR \T1/ptm/m/n/12 abs / 1706.03762
  []
 
-[22] (appendix/appendix.tex (appendix/crawlers.tex
+[21] (appendix/appendix.tex
+Overfull \hbox (72.64348pt too wide) in paragraph at lines 3--4
+\T1/ptm/m/n/12 All code uti-lized in this project can be found at https://githu
+b.com/rohanbansal12/extended_essay.
+ []
+
+(appendix/crawlers.tex
 \openout3 = `proceedings.pyg'.
 
 
@@ -1613,47 +1610,59 @@ LaTeX Font Info:    Trying to load font information for TS1+txtt on input line
  ("C:\Program Files\MiKTeX 2.9\tex/latex/txfonts\ts1txtt.fd"
 File: ts1txtt.fd 2000/12/15 v3.1
 )
-[23
+[22
 
 ])
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/FA8459823E5BF3E424B843E1E6226B6C6770B958F7EC1EBC5ABE203354
-D42643.pygtex [24] [25])) (appendix/scraping.tex
+D42643.pygtex [23] [24] [25])) (appendix/scraping.tex
 \openout3 = `proceedings.pyg'.
 
 
-(_minted-proceedings/92CE9559B62290BE54E55E43E206FEC16770B958F7EC1EBC5ABE203354
-D42643.pygtex [26] [27]
+(_minted-proceedings/63AEA3590C03B4E0F10B9BBB2862C0936770B958F7EC1EBC5ABE203354
+D42643.pygtex [26]
 LaTeX Font Info:    Font shape `TS1/txtt/b/n' in size <12> not available
 (Font)              Font shape `TS1/txtt/bx/n' tried instead on input line 62.
-)) (appendix/processing.tex
+ [27])
 \openout3 = `proceedings.pyg'.
 
 
-(_minted-proceedings/9DF06D734EEE32EB80BF2D05864DD1EB6770B958F7EC1EBC5ABE203354
-D42643.pygtex [28] [29] [30])) (appendix/data-info.tex)
-Overfull \hbox (25.13907pt too wide) in paragraph at lines 18--20
+(_minted-proceedings/DC102B64977B42868E11A15E365867F36770B958F7EC1EBC5ABE203354
+D42643.pygtex [28] [29])) (appendix/processing.tex
+\openout3 = `proceedings.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-proceedings/5B07F4CC34F479AB7DFA036CEB6F16F76770B958F7EC1EBC5ABE203354D4
+2643.pygtex proceedings.pyg)...executed.
+
+
+(_minted-proceedings/5B07F4CC34F479AB7DFA036CEB6F16F76770B958F7EC1EBC5ABE203354
+D42643.pygtex [30] [31] [32])) (appendix/data-info.tex)
+Overfull \hbox (25.13907pt too wide) in paragraph at lines 22--24
 \T1/ptm/m/n/12 The scraped data was con-verted into train, test, val-i-da-tion 
 sets through a $\OT1/ztmcm/m/n/12 70%\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 15%
 \OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 15%$
  []
 
 (appendix/permissions.tex
-Overfull \hbox (16.57106pt too wide) in paragraph at lines 10--10
+Overfull \hbox (14.18079pt too wide) in paragraph at lines 10--10
 []\T1/ptm/b/n/14.4 Permission Re-ceived from Mr. Uri Bram of The Browser 
  []
 
-[31]))
+[33]))
+runsystem(del _minted-proceedings\9DF06D734EEE32EB80BF2D05864DD1EB6770B958F7EC1
+EBC5ABE203354D42643.pygtex)...executed.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 162.
- [32]
+ [34]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 162.
  (proceedings.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 162.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 162.
 Package rerunfilecheck Info: File `proceedings.out' has not changed.
-(rerunfilecheck)             Checksum: 35D7BF2A63CEEE1A45EB98BD63252F24;2093.
+(rerunfilecheck)             Checksum: 9218D7DE6FE09F6CF1C62F342546A031;2151.
 runsystem(del proceedings.pyg)...executed.
 
 Package logreq Info: Writing requests to 'proceedings.run.xml'.
@@ -1662,13 +1671,13 @@ Package logreq Info: Writing requests to 'proceedings.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 162.
  ) 
 Here is how much of TeX's memory you used:
- 34100 strings out of 481212
- 634951 string characters out of 2913851
- 1338907 words of memory out of 3000000
- 48914 multiletter control sequences out of 15000+200000
- 592467 words of font info for 116 fonts, out of 3000000 for 9000
+ 34114 strings out of 481212
+ 635874 string characters out of 2913851
+ 1339054 words of memory out of 3000000
+ 48921 multiletter control sequences out of 15000+200000
+ 594111 words of font info for 117 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,13n,81p,2486b,1733s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,13n,81p,2486b,1735s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{glo:NLP} has been referenced but does not exist, 
 replaced by a fixed one
 
@@ -1691,9 +1700,9 @@ les/MiKTeX 2.9/fonts/type1/public/txfonts/tcxbtt.pfb><C:/Program Files/MiKTeX 2
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on proceedings.pdf (33 pages, 747086 bytes).
+Output written on proceedings.pdf (35 pages, 755018 bytes).
 PDF statistics:
- 626 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
- 302 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 642 PDF objects out of 1000 (max. 8388607)
+ 109 named destinations out of 1000 (max. 500000)
+ 310 words of extra memory for PDF output out of 10000 (max. 10000000)
 

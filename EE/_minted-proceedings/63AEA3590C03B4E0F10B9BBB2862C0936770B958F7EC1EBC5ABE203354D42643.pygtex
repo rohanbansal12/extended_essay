@@ -11,7 +11,7 @@
 
 \PYG{n+nd}{@dataclass\PYGZus{}json}
 \PYG{n+nd}{@dataclass}
-\PYG{k}{class} \PYG{n+nc}{LongformArticle}\PYG{p}{:}
+\PYG{k}{class} \PYG{n+nc}{ScrapedArticle}\PYG{p}{:}
     \PYG{n}{title}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
     \PYG{n}{text}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
     \PYG{n}{url}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
@@ -50,7 +50,7 @@
         \PYG{n}{article}\PYG{o}{.}\PYG{n}{download}\PYG{p}{()}
         \PYG{n}{article}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{()}
         \PYG{n}{soup} \PYG{o}{=} \PYG{n}{BeautifulSoup}\PYG{p}{(}\PYG{n}{article}\PYG{o}{.}\PYG{n}{html}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}lxml\PYGZsq{}}\PYG{p}{)}
-        \PYG{n}{ga} \PYG{o}{=} \PYG{n}{LongformArticle}\PYG{p}{()}
+        \PYG{n}{ga} \PYG{o}{=} \PYG{n}{ScrapedArticle}\PYG{p}{()}
         \PYG{n}{ga}\PYG{o}{.}\PYG{n}{url} \PYG{o}{=} \PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}url\PYGZsq{}}\PYG{p}{]}
         \PYG{n}{ga}\PYG{o}{.}\PYG{n}{title} \PYG{o}{=} \PYG{n}{url}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}title\PYGZsq{}}\PYG{p}{]}
         \PYG{n}{ga}\PYG{o}{.}\PYG{n}{text} \PYG{o}{=} \PYG{n}{article}\PYG{o}{.}\PYG{n}{text}

@@ -9,7 +9,6 @@
 
 \PYG{n}{tokenizer} \PYG{o}{=} \PYG{n}{BertWordPieceTokenizer}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}bert\PYGZhy{}base\PYGZhy{}uncased.txt\PYGZdq{}}\PYG{p}{,} \PYG{n}{lowercase}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
 
-\PYG{c+c1}{\PYGZsh{} define Articles dataset class for easy sampling, iteration, and weight creating}
 \PYG{k}{class} \PYG{n+nc}{Articles}\PYG{p}{(}\PYG{n}{torch}\PYG{o}{.}\PYG{n}{utils}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{Dataset}\PYG{p}{):}
     \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{json\PYGZus{}file}\PYG{p}{,} \PYG{n}{index\PYGZus{}file}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
         \PYG{n+nb}{super}\PYG{p}{()}\PYG{o}{.}\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{()}
@@ -56,13 +55,15 @@
     \PYG{p}{):}
         \PYG{n}{min\PYGZus{}length\PYGZus{}articles} \PYG{o}{=} \PYG{p}{[]}
         \PYG{k}{for} \PYG{n}{idx}\PYG{p}{,} \PYG{n}{example} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{):}
-            \PYG{n}{encoded} \PYG{o}{=} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n}{encode}\PYG{p}{(}\PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{],} \PYG{n}{add\PYGZus{}special\PYGZus{}tokens}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}\PYG{o}{.}\PYG{n}{ids}
+            \PYG{n}{encoded} \PYG{o}{=} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n}{encode}\PYG{p}{(}\PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{],}
+                                       \PYG{n}{add\PYGZus{}special\PYGZus{}tokens}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}\PYG{o}{.}\PYG{n}{ids}
             \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}text\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{encoded}
             \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{url\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}
                 \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{],} \PYG{n}{url\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}miscellaneous\PYGZdq{}}\PYG{p}{)}
             \PYG{p}{)}
             \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{examples}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}
-                \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{],} \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}miscellaneous\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}model\PYGZus{}publication\PYGZdq{}}\PYG{p}{],}
+                \PYG{n}{publication\PYGZus{}to\PYGZus{}id}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}miscellaneous\PYGZdq{}}\PYG{p}{)}
             \PYG{p}{)}
             \PYG{k}{if} \PYG{n+nb}{filter}\PYG{p}{:}
                 \PYG{k}{if} \PYG{n}{day\PYGZus{}range} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}

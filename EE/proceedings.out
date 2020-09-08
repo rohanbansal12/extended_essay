@@ -19,14 +19,15 @@
 \BOOKMARK [2][-]{subsection.6.3}{Quantitative Evaluation}{section.6}% 19
 \BOOKMARK [1][-]{section.7}{Discussion}{}% 20
 \BOOKMARK [1][-]{section.8}{Conclusion}{}% 21
-\BOOKMARK [1][-]{appendix.A}{Crawling Scripts}{}% 22
-\BOOKMARK [2][-]{subsection.A.1}{Longform.org Crawling Script}{appendix.A}% 23
-\BOOKMARK [2][-]{subsection.A.2}{Vox Crawling Script}{appendix.A}% 24
-\BOOKMARK [1][-]{appendix.B}{Scraping Scripts}{}% 25
-\BOOKMARK [2][-]{subsection.B.1}{Vanilla Scraping Script}{appendix.B}% 26
-\BOOKMARK [1][-]{appendix.C}{Data Processing}{}% 27
-\BOOKMARK [2][-]{subsection.C.1}{Data Mapping}{appendix.C}% 28
-\BOOKMARK [1][-]{appendix.D}{Data Distribution}{}% 29
-\BOOKMARK [1][-]{appendix.E}{Permission Email}{}% 30
-\BOOKMARK [2][-]{subsection.E.1}{Email Sent to Mr. Uri Bram of The Browser}{appendix.E}% 31
-\BOOKMARK [2][-]{subsection.E.2}{Permission Received from Mr. Uri Bram of The Browser}{appendix.E}% 32
+\BOOKMARK [1][-]{appendix.A}{Code Base}{}% 22
+\BOOKMARK [1][-]{appendix.B}{Crawling Scripts}{}% 23
+\BOOKMARK [2][-]{subsection.B.1}{Longform.org Crawling Script}{appendix.B}% 24
+\BOOKMARK [2][-]{subsection.B.2}{Vox Crawling Script}{appendix.B}% 25
+\BOOKMARK [1][-]{appendix.C}{Scraping Scripts}{}% 26
+\BOOKMARK [2][-]{subsection.C.1}{Vanilla Scraping Script}{appendix.C}% 27
+\BOOKMARK [2][-]{subsection.C.2}{Selenium Scraping Script}{appendix.C}% 28
+\BOOKMARK [1][-]{appendix.D}{Data Processing}{}% 29
+\BOOKMARK [1][-]{appendix.E}{Data Distribution}{}% 30
+\BOOKMARK [1][-]{appendix.F}{Permission Email}{}% 31
+\BOOKMARK [2][-]{subsection.F.1}{Email Sent to Mr. Uri Bram of The Browser}{appendix.F}% 32
+\BOOKMARK [2][-]{subsection.F.2}{Permission Received from Mr. Uri Bram of The Browser}{appendix.F}% 33
