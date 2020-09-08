@@ -13,7 +13,7 @@
 \usepackage{graphics}      % for EPS, load graphicx instead 
 \usepackage[T1]{fontenc}   % for umlauts and other diaeresis
 \usepackage{txfonts}
-\usepackage{mathptmx}
+
 \usepackage{color}
 \usepackage{booktabs}
 \usepackage{textcomp}
@@ -77,7 +77,7 @@ The encoder takes the raw embedding sequence as input which is passed to the sel
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/positional_encodings.png}
-\caption{The basic addition of positional encodings to the input vectors before being fed to the model~\parencite{alammar_2018}.)
+\caption{The basic addition of positional encodings to the input vectors before being fed to the model~\parencite{alammar_2018}.
 }
 \label{fig:positional_encodings}
 \end{figure}
@@ -135,10 +135,10 @@ This attention layer output is then passed to the fully-connected feed forward n
 \label{fig:neural-network}
 \end{figure}
 
-The intricate workings of a neural network are outside of the scope of this experiment and have been extensively documented throughout machine learning literature, thus they will not be discussed in detail. However, the basic premise is very similar to the workings of \acrshort{rfs}, where a dot-product is calculated with learned weights, and then passed through an activation function, such as $\sigma$ \parencite{lecun2015deep}.
+The workings of a neural network have been extensively documented throughout machine learning literature, thus they will not be discussed in detail. However, the basic premise is very similar to the workings of \acrshort{rfs}, where a dot-product is calculated with learned weights, and then passed through an activation function, such as $\sigma$ \parencite{lecun2015deep}.
 
 \subsubsection{General Working}
-\acrshort{bert} employs 12 of these encoders, with both self-attention and feed forward components, stacked on top of each other. Thus, the initial inputs go through the series of steps repeatedly, until the final output is recovered. Because the model is being used for classification, another final neural network is placed on top that takes the outputs of the encoders and generates a single probability for the entry \parencite{sun2019finetune}.
+\acrshort{bert} employs 12 of these encoders, with both self-attention and feed forward components, stacked on top of each other. Because the model is being used for classification, another final neural network is placed on top that takes the outputs of the encoders and generates a single probability for the entry \parencite{sun2019finetune}.
 
 \section{Hypothesis/Applied Theory}
 \input{sections/hypothesis}

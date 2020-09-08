@@ -1,0 +1,102 @@
+\subsection{Evenly-Split Batch Generator}
+For improved stability of the training process and because of the skewed nature of the datasets, I chose to feed in batches that had an even number of positive and negative labels. To do this, I created a subclass of the PyTorch Sampler \parencite{NEURIPS2019_9015}.
+\begin{minted}{python}
+import torch
+import numpy as np
+import torch.nn as nn
+
+# Create batches with even splits
+# positive samples in first half and negative examples in second half
+class BatchSamplerWithNegativeSamples(torch.utils.data.Sampler):
+    def __init__(self, pos_sampler, neg_sampler, batch_size, items):
+        self._pos_sampler = pos_sampler
+        self._neg_sampler = neg_sampler
+        self._items = items
+        assert (
+            batch_size % 2 == 0
+        ), "Batch size must be divisible by two for negative samples."
+        self._batch_size = batch_size
+
+    def __iter__(self):
+        batch, neg_batch = [], []
+        neg_sampler = iter(self._neg_sampler)
+        for pos_idx in self._pos_sampler:
+            batch.append(pos_idx)
+            neg_idx = pos_idx
+            # keep sampling until we get a true negative sample
+            while self._items[neg_idx] == self._items[pos_idx]:
+                try:
+                    neg_idx = next(neg_sampler)
+                except StopIteration:
+                    neg_sampler = iter(self._neg_sampler)
+                    neg_idx = next(neg_sampler)
+            neg_batch.append(neg_idx)
+            if len(batch) == self._batch_size // 2:
+                batch.extend(neg_batch)
+                yield batch
+                batch, neg_batch = [], []
+        return
+
+    def __len__(self):
+        return len(self._pos_sampler) // self._batch_size
+
+\end{minted}
+
+\subsection{RankFromSets Batched Predictions}
+\begin{minted}{python}
+@torch.no_grad()
+def calculate_batched_predictions(batch, model, device, target):
+    model.eval()
+    (publications, articles, word_attributes, 
+    attribute_offsets, real_labels) = batch
+    publication_set = [target] * len(real_labels)
+    publication_set = torch.tensor(publication_set, dtype=torch.long)
+    publication_set = publication_set.to(device)
+    articles = articles.to(device)
+    word_attributes = word_attributes.to(device)
+    attribute_offsets = attribute_offsets.to(device)
+    logits = model(publication_set, articles, 
+    			   word_attributes, attribute_offsets)
+    final_logits = logits.cpu().numpy()
+    return final_logits
+\end{minted}
+
+\subsection{BERT Batched Predictions}
+\begin{minted}{python}
+@torch.no_grad()
+def calculate_batched_predictions(batch, model, device, target):
+    model.eval()
+    (word_attributes, attention_masks, 
+    word_subset_counts, real_labels) = batch
+    word_attributes = word_attributes.to(device)
+    attention_masks = attention_masks.to(device)
+    logits = model(word_attributes, attention_mask=attention_masks)[0]
+    final_logits = np.squeeze(logits.cpu().numpy())
+    return final_logits
+\end{minted}
+
+\subsection{Recall Calculation}
+\begin{minted}{python}
+@torch.no_grad()
+def calculate_recall(
+    dataset, indices, recall_value=1000, 
+    target_publication, version, writer, step,
+):
+    rev_indices = indices[::-1]
+    correct_10 = 0
+    correct_big = 0
+    for i in range(recall_value):
+        if dataset[rev_indices[i]]["model_publication"] == target_publication:
+            if i < 10:
+                correct_10 += 1
+            correct_big += 1
+    print(f"{version} Performance: Step - {step}")
+    print(f"Top 10: {correct_10*10} %")
+    print(
+        f"Top {str(recall_value)}: {(correct_big*100)/recall_value} %"
+    )
+    print("--------------------")
+    writer.add_scalar(f"{version}/Top-10", correct_10, step)
+    writer.add_scalar(f"{version}/Top-{recall_value}", correct_big, step)
+    return correct_big
+\end{minted}

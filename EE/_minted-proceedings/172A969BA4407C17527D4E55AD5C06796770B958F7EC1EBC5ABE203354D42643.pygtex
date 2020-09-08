@@ -1,0 +1,40 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{torch}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{torch.nn} \PYG{k}{as} \PYG{n+nn}{nn}
+
+\PYG{c+c1}{\PYGZsh{} Create batches with even splits}
+\PYG{c+c1}{\PYGZsh{} positive samples in first half and negative examples in second half}
+\PYG{k}{class} \PYG{n+nc}{BatchSamplerWithNegativeSamples}\PYG{p}{(}\PYG{n}{torch}\PYG{o}{.}\PYG{n}{utils}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{Sampler}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{pos\PYGZus{}sampler}\PYG{p}{,} \PYG{n}{neg\PYGZus{}sampler}\PYG{p}{,} \PYG{n}{batch\PYGZus{}size}\PYG{p}{,} \PYG{n}{items}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}pos\PYGZus{}sampler} \PYG{o}{=} \PYG{n}{pos\PYGZus{}sampler}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}neg\PYGZus{}sampler} \PYG{o}{=} \PYG{n}{neg\PYGZus{}sampler}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}items} \PYG{o}{=} \PYG{n}{items}
+        \PYG{k}{assert} \PYG{p}{(}
+            \PYG{n}{batch\PYGZus{}size} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}
+        \PYG{p}{),} \PYG{l+s+s2}{\PYGZdq{}Batch size must be divisible by two for negative samples.\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}batch\PYGZus{}size} \PYG{o}{=} \PYG{n}{batch\PYGZus{}size}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}iter\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{batch}\PYG{p}{,} \PYG{n}{neg\PYGZus{}batch} \PYG{o}{=} \PYG{p}{[],} \PYG{p}{[]}
+        \PYG{n}{neg\PYGZus{}sampler} \PYG{o}{=} \PYG{n+nb}{iter}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}neg\PYGZus{}sampler}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{pos\PYGZus{}idx} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}pos\PYGZus{}sampler}\PYG{p}{:}
+            \PYG{n}{batch}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{pos\PYGZus{}idx}\PYG{p}{)}
+            \PYG{n}{neg\PYGZus{}idx} \PYG{o}{=} \PYG{n}{pos\PYGZus{}idx}
+            \PYG{c+c1}{\PYGZsh{} keep sampling until we get a true negative sample}
+            \PYG{k}{while} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}items}\PYG{p}{[}\PYG{n}{neg\PYGZus{}idx}\PYG{p}{]} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}items}\PYG{p}{[}\PYG{n}{pos\PYGZus{}idx}\PYG{p}{]:}
+                \PYG{k}{try}\PYG{p}{:}
+                    \PYG{n}{neg\PYGZus{}idx} \PYG{o}{=} \PYG{n+nb}{next}\PYG{p}{(}\PYG{n}{neg\PYGZus{}sampler}\PYG{p}{)}
+                \PYG{k}{except} \PYG{n+ne}{StopIteration}\PYG{p}{:}
+                    \PYG{n}{neg\PYGZus{}sampler} \PYG{o}{=} \PYG{n+nb}{iter}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}neg\PYGZus{}sampler}\PYG{p}{)}
+                    \PYG{n}{neg\PYGZus{}idx} \PYG{o}{=} \PYG{n+nb}{next}\PYG{p}{(}\PYG{n}{neg\PYGZus{}sampler}\PYG{p}{)}
+            \PYG{n}{neg\PYGZus{}batch}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{neg\PYGZus{}idx}\PYG{p}{)}
+            \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{batch}\PYG{p}{)} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}batch\PYGZus{}size} \PYG{o}{//} \PYG{l+m+mi}{2}\PYG{p}{:}
+                \PYG{n}{batch}\PYG{o}{.}\PYG{n}{extend}\PYG{p}{(}\PYG{n}{neg\PYGZus{}batch}\PYG{p}{)}
+                \PYG{k}{yield} \PYG{n}{batch}
+                \PYG{n}{batch}\PYG{p}{,} \PYG{n}{neg\PYGZus{}batch} \PYG{o}{=} \PYG{p}{[],} \PYG{p}{[]}
+        \PYG{k}{return}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}len\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}pos\PYGZus{}sampler}\PYG{p}{)} \PYG{o}{//} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}batch\PYGZus{}size}
+\end{Verbatim}

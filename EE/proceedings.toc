@@ -29,6 +29,11 @@
 \contentsline {subsection}{\numberline {C.2}Selenium Scraping Script}{28}{subsection.C.2}%
 \contentsline {section}{\numberline {D}Data Processing}{30}{appendix.D}%
 \contentsline {section}{\numberline {E}Data Distribution}{33}{appendix.E}%
-\contentsline {section}{\numberline {F}Permission Email}{33}{appendix.F}%
-\contentsline {subsection}{\numberline {F.1}Email Sent to Mr. Uri Bram of The Browser}{33}{subsection.F.1}%
-\contentsline {subsection}{\numberline {F.2}Permission Received from Mr. Uri Bram of The Browser}{33}{subsection.F.2}%
+\contentsline {section}{\numberline {F}Training Scripts}{33}{appendix.F}%
+\contentsline {subsection}{\numberline {F.1}Evenly-Split Batch Generator}{33}{subsection.F.1}%
+\contentsline {subsection}{\numberline {F.2}RankFromSets Batched Predictions}{34}{subsection.F.2}%
+\contentsline {subsection}{\numberline {F.3}BERT Batched Predictions}{35}{subsection.F.3}%
+\contentsline {subsection}{\numberline {F.4}Recall Calculation}{35}{subsection.F.4}%
+\contentsline {section}{\numberline {G}Permission Email}{36}{appendix.G}%
+\contentsline {subsection}{\numberline {G.1}Email Sent to Mr. Uri Bram of The Browser}{36}{subsection.G.1}%
+\contentsline {subsection}{\numberline {G.2}Permission Received from Mr. Uri Bram of The Browser}{36}{subsection.G.2}%
