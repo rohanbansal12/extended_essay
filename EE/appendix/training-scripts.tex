@@ -42,7 +42,8 @@ class BatchSamplerWithNegativeSamples(torch.utils.data.Sampler):
 
 \end{minted}
 
-\subsection{RankFromSets Batched Predictions}
+\subsection{Batched Predictions}
+\subsubsection{RankFromSets}
 \begin{minted}{python}
 @torch.no_grad()
 def calculate_batched_predictions(batch, model, device, target):
@@ -61,7 +62,7 @@ def calculate_batched_predictions(batch, model, device, target):
     return final_logits
 \end{minted}
 
-\subsection{BERT Batched Predictions}
+\subsubsection{BERT}
 \begin{minted}{python}
 @torch.no_grad()
 def calculate_batched_predictions(batch, model, device, target):
@@ -99,4 +100,22 @@ def calculate_recall(
     writer.add_scalar(f"{version}/Top-10", correct_10, step)
     writer.add_scalar(f"{version}/Top-{recall_value}", correct_big, step)
     return correct_big
+\end{minted}
+
+\subsection{Generate Rankings List}
+\begin{minted}{python}
+def create_ranked_results_list(final_word_ids, sorted_preds, indices, data):
+    df = pd.DataFrame(columns=["title", "url", 
+    	"publication", "date", "prediction"])
+    ranked_indices = indices[::-1]
+    predictions = sorted_preds[::-1]
+    for i in range(0, 1500):
+        example = data[ranked_indices[i]]
+        prediction = predictions[i]
+        title = example["title"]
+        url = example["link"]
+        publication = example["publication"]
+        date = example["date"]
+        df.loc[i] = [title, url, publication, date, prediction]
+    return df
 \end{minted}

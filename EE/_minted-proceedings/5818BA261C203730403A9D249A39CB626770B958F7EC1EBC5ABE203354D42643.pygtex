@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{create\PYGZus{}ranked\PYGZus{}results\PYGZus{}list}\PYG{p}{(}\PYG{n}{final\PYGZus{}word\PYGZus{}ids}\PYG{p}{,} \PYG{n}{sorted\PYGZus{}preds}\PYG{p}{,} \PYG{n}{indices}\PYG{p}{,} \PYG{n}{data}\PYG{p}{):}
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{columns}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}title\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}url\PYGZdq{}}\PYG{p}{,}
+    	\PYG{l+s+s2}{\PYGZdq{}publication\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}date\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}prediction\PYGZdq{}}\PYG{p}{])}
+    \PYG{n}{ranked\PYGZus{}indices} \PYG{o}{=} \PYG{n}{indices}\PYG{p}{[::}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+    \PYG{n}{predictions} \PYG{o}{=} \PYG{n}{sorted\PYGZus{}preds}\PYG{p}{[::}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1500}\PYG{p}{):}
+        \PYG{n}{example} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{n}{ranked\PYGZus{}indices}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}
+        \PYG{n}{prediction} \PYG{o}{=} \PYG{n}{predictions}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+        \PYG{n}{title} \PYG{o}{=} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}title\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{url} \PYG{o}{=} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}link\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{publication} \PYG{o}{=} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}publication\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{date} \PYG{o}{=} \PYG{n}{example}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}date\PYGZdq{}}\PYG{p}{]}
+        \PYG{n}{df}\PYG{o}{.}\PYG{n}{loc}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{n}{title}\PYG{p}{,} \PYG{n}{url}\PYG{p}{,} \PYG{n}{publication}\PYG{p}{,} \PYG{n}{date}\PYG{p}{,} \PYG{n}{prediction}\PYG{p}{]}
+    \PYG{k}{return} \PYG{n}{df}
+\end{Verbatim}

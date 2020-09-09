@@ -30,9 +30,11 @@
 \BOOKMARK [1][-]{appendix.E}{Data Distribution}{}% 30
 \BOOKMARK [1][-]{appendix.F}{Training Scripts}{}% 31
 \BOOKMARK [2][-]{subsection.F.1}{Evenly-Split Batch Generator}{appendix.F}% 32
-\BOOKMARK [2][-]{subsection.F.2}{RankFromSets Batched Predictions}{appendix.F}% 33
-\BOOKMARK [2][-]{subsection.F.3}{BERT Batched Predictions}{appendix.F}% 34
-\BOOKMARK [2][-]{subsection.F.4}{Recall Calculation}{appendix.F}% 35
-\BOOKMARK [1][-]{appendix.G}{Permission Email}{}% 36
-\BOOKMARK [2][-]{subsection.G.1}{Email Sent to Mr. Uri Bram of The Browser}{appendix.G}% 37
-\BOOKMARK [2][-]{subsection.G.2}{Permission Received from Mr. Uri Bram of The Browser}{appendix.G}% 38
+\BOOKMARK [2][-]{subsection.F.2}{Batched Predictions}{appendix.F}% 33
+\BOOKMARK [3][-]{subsubsection.F.2.1}{RankFromSets}{subsection.F.2}% 34
+\BOOKMARK [3][-]{subsubsection.F.2.2}{BERT}{subsection.F.2}% 35
+\BOOKMARK [2][-]{subsection.F.3}{Recall Calculation}{appendix.F}% 36
+\BOOKMARK [2][-]{subsection.F.4}{Generate Rankings List}{appendix.F}% 37
+\BOOKMARK [1][-]{appendix.G}{Permission Email}{}% 38
+\BOOKMARK [2][-]{subsection.G.1}{Email Sent to Mr. Uri Bram of The Browser}{appendix.G}% 39
+\BOOKMARK [2][-]{subsection.G.2}{Permission Received from Mr. Uri Bram of The Browser}{appendix.G}% 40
