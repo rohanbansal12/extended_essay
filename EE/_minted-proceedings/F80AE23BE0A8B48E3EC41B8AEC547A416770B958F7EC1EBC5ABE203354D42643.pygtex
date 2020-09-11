@@ -1,6 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{n+nd}{@torch}\PYG{o}{.}\PYG{n}{no\PYGZus{}grad}\PYG{p}{()}
-\PYG{k}{def} \PYG{n+nf}{calculate\PYGZus{}batched\PYGZus{}predictions}\PYG{p}{(}\PYG{n}{batch}\PYG{p}{,} \PYG{n}{model}\PYG{p}{,} \PYG{n}{device}\PYG{p}{,} \PYG{n}{target}\PYG{p}{):}
+\PYG{k}{def} \PYG{n+nf}{calculate\PYGZus{}batched\PYGZus{}predictions}\PYG{p}{(}\PYG{n}{batch}\PYG{p}{,} \PYG{n}{model}\PYG{p}{,} \PYG{n}{device}\PYG{p}{,} \PYG{n}{target}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{):}
     \PYG{n}{model}\PYG{o}{.}\PYG{n}{eval}\PYG{p}{()}
     \PYG{p}{(}\PYG{n}{word\PYGZus{}attributes}\PYG{p}{,} \PYG{n}{attention\PYGZus{}masks}\PYG{p}{,}
     \PYG{n}{word\PYGZus{}subset\PYGZus{}counts}\PYG{p}{,} \PYG{n}{real\PYGZus{}labels}\PYG{p}{)} \PYG{o}{=} \PYG{n}{batch}

@@ -1,5 +1,6 @@
 \subsection{Evenly-Split Batch Generator}
 For improved stability of the training process and because of the skewed nature of the datasets, I chose to feed in batches that had an even number of positive and negative labels. To do this, I created a subclass of the PyTorch Sampler \parencite{NEURIPS2019_9015}.
+
 \begin{minted}{python}
 import torch
 import numpy as np
@@ -43,10 +44,12 @@ class BatchSamplerWithNegativeSamples(torch.utils.data.Sampler):
 \end{minted}
 
 \subsection{Batched Predictions}
+These were the functions used to take an input batch of examples and generate predictions on them for both approaches. The device refers to a cpu or gpu depending on the hardware and target refers to the intended publication (which was the quality-writing publication, or id 0, for the entirety of this experiment).
+
 \subsubsection{RankFromSets}
 \begin{minted}{python}
 @torch.no_grad()
-def calculate_batched_predictions(batch, model, device, target):
+def calculate_batched_predictions(batch, model, device, target=0):
     model.eval()
     (publications, articles, word_attributes, 
     attribute_offsets, real_labels) = batch
@@ -65,7 +68,7 @@ def calculate_batched_predictions(batch, model, device, target):
 \subsubsection{BERT}
 \begin{minted}{python}
 @torch.no_grad()
-def calculate_batched_predictions(batch, model, device, target):
+def calculate_batched_predictions(batch, model, device, target=0):
     model.eval()
     (word_attributes, attention_masks, 
     word_subset_counts, real_labels) = batch
@@ -77,6 +80,8 @@ def calculate_batched_predictions(batch, model, device, target):
 \end{minted}
 
 \subsection{Recall Calculation}
+This was the loop within a function that was used to generate recall statistics for the model on a new dataset (validation or test) with backpropagationa and gradient calculations disabled. 
+
 \begin{minted}{python}
 @torch.no_grad()
 def calculate_recall(
@@ -99,10 +104,12 @@ def calculate_recall(
     print("--------------------")
     writer.add_scalar(f"{version}/Top-10", correct_10, step)
     writer.add_scalar(f"{version}/Top-{recall_value}", correct_big, step)
-    return correct_big
+    return correct_big, correct_10
 \end{minted}
 
 \subsection{Generate Rankings List}
+This was used to create a Pandas DataFrame that ranked results on a new dataset and outputted information on the top 1500 articles.
+
 \begin{minted}{python}
 def create_ranked_results_list(final_word_ids, sorted_preds, indices, data):
     df = pd.DataFrame(columns=["title", "url", 
