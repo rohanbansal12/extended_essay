@@ -145,6 +145,30 @@
       \field{title}{{RankFromSets}: Scalable Set Recommendation with Optimal Recall}
       \field{year}{2020}
     \endentry
+    \entry{bellman_1954}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7bb51e859e70aaedef4ed1f3bb67779b}{%
+           family={Bellman},
+           familyi={B\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Defense Technical Information Center}%
+      }
+      \strng{namehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{fullhash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{bibnamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authorbibnamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authornamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authorfullhash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Theory of Dynamic Programming}
+      \field{year}{1954}
+    \endentry
     \entry{bengio_goodfellow_courville_2017}{book}{}
       \name{author}{3}{}{%
         {{hash=40a8e4774982146adc2688546f54efb2}{%

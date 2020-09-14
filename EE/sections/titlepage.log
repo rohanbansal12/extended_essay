@@ -1,0 +1,558 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  12 SEP 2020 03:29
+entering extended mode
+**./titlepage.tex
+(titlepage.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-08-07>
+
+! LaTeX Error: Environment titlepage undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{titlepage}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2     \begin{center}
+                      
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 2--2
+[] 
+ []
+
+! Undefined control sequence.
+l.5         \huge
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (55.6872pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Comparing 
+ []
+
+
+Overfull \hbox (28.64569pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Novel 
+ []
+
+
+Overfull \hbox (20.34015pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Ma- 
+ []
+
+
+Overfull \hbox (26.03459pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 chine 
+ []
+
+
+Overfull \hbox (32.73593pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Learn- 
+ []
+
+
+Overfull \hbox (15.33325pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 ing 
+ []
+
+
+Overfull \hbox (18.91656pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Ap- 
+ []
+
+
+Overfull \hbox (43.45253pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 proaches 
+ []
+
+
+Overfull \hbox (13.99994pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 for 
+ []
+
+
+Overfull \hbox (22.84016pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Rec- 
+ []
+
+
+Overfull \hbox (19.16656pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 om- 
+ []
+
+
+Overfull \hbox (31.46512pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 mend- 
+ []
+
+
+Overfull \hbox (15.33325pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 ing 
+ []
+
+
+Overfull \hbox (27.64566pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Qual- 
+ []
+
+
+Overfull \hbox (13.4166pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 ity 
+ []
+
+
+Overfull \hbox (27.16653pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 Writ- 
+ []
+
+
+Overfull \hbox (15.49298pt too wide) in paragraph at lines 6--7
+ \OT1/cmr/bx/n/10 ing 
+ []
+
+! Undefined control sequence.
+l.12         \large
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (32.74286pt too wide) in paragraph at lines 13--13
+ []\OT1/cmr/bx/n/10 Rohan 
+ []
+
+
+Overfull \hbox (33.48032pt too wide) in paragraph at lines 13--13
+ \OT1/cmr/bx/n/10 Bansal 
+ []
+
+Missing character: There is no C in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no H in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+! Undefined control sequence.
+l.18         \Large
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (45.20947pt too wide) in paragraph at lines 19--19
+ []\OT1/cmr/bx/n/10 Research 
+ []
+
+
+Overfull \hbox (28.6679pt too wide) in paragraph at lines 19--19
+ \OT1/cmr/bx/n/10 Ques- 
+ []
+
+
+Overfull \hbox (22.99988pt too wide) in paragraph at lines 19--19
+ \OT1/cmr/bx/n/10 tion: 
+ []
+
+! Undefined control sequence.
+<recently read> \large 
+                       
+l.20         \large
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (19.18878pt too wide) in paragraph at lines 21--22
+ []\OT1/cmr/m/it/10 How 
+ []
+
+
+Overfull \hbox (10.22217pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 do 
+ []
+
+
+Overfull \hbox (25.42758pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 trans- 
+ []
+
+
+Overfull \hbox (29.38869pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 former 
+ []
+
+
+Overfull \hbox (21.46652pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 mod- 
+ []
+
+
+Overfull \hbox (11.24437pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 els 
+ []
+
+
+Overfull \hbox (18.14433pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 with 
+ []
+
+
+Overfull \hbox (16.9943pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 pre- 
+ []
+
+
+Overfull \hbox (60.09402pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 contextualized 
+ []
+
+
+Overfull \hbox (20.57208pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 word 
+ []
+
+
+Overfull \hbox (16.35544pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 em- 
+ []
+
+
+Overfull \hbox (16.8665pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 bed- 
+ []
+
+
+Overfull \hbox (22.48875pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 dings 
+ []
+
+
+Overfull \hbox (20.9554pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 com- 
+ []
+
+
+Overfull \hbox (18.01651pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 pare 
+ []
+
+
+Overfull \hbox (8.43327pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 to 
+ []
+
+
+Overfull \hbox (15.58876pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 set- 
+ []
+
+
+Overfull \hbox (22.48871pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 based 
+ []
+
+
+Overfull \hbox (15.97205pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 rec- 
+ []
+
+
+Overfull \hbox (16.86656pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 om- 
+ []
+
+
+Overfull \hbox (21.97763pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 men- 
+ []
+
+
+Overfull \hbox (13.79991pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 da- 
+ []
+
+
+Overfull \hbox (17.12212pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 tion 
+ []
+
+
+Overfull \hbox (21.46652pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 mod- 
+ []
+
+
+Overfull \hbox (14.31102pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 els, 
+ []
+
+
+Overfull \hbox (19.16655pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 such 
+ []
+
+
+Overfull \hbox (9.19995pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 as 
+ []
+
+
+Overfull \hbox (5.11108pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 a 
+ []
+
+
+Overfull \hbox (17.1221pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 dot- 
+ []
+
+
+Overfull \hbox (31.81642pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 product 
+ []
+
+
+Overfull \hbox (28.11093pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 model, 
+ []
+
+
+Overfull \hbox (8.68884pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 in 
+ []
+
+
+Overfull \hbox (20.31651pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 their 
+ []
+
+
+Overfull \hbox (18.91098pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 abil- 
+ []
+
+
+Overfull \hbox (11.24435pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ity 
+ []
+
+
+Overfull \hbox (8.43327pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 to 
+ []
+
+
+Overfull \hbox (19.9332pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 clas- 
+ []
+
+
+Overfull \hbox (15.07768pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 sify 
+ []
+
+
+Overfull \hbox (12.90546pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ar- 
+ []
+
+
+Overfull \hbox (9.96658pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ti- 
+ []
+
+
+Overfull \hbox (15.84433pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 cles 
+ []
+
+
+Overfull \hbox (10.73328pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 on 
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 the 
+ []
+
+
+Overfull \hbox (12.77766pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ba- 
+ []
+
+
+Overfull \hbox (11.24438pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 sis 
+ []
+
+
+Overfull \hbox (8.17773pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 of 
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 the 
+ []
+
+
+Overfull \hbox (26.3554pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 "qual- 
+ []
+
+
+Overfull \hbox (16.38878pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ity" 
+ []
+
+
+Overfull \hbox (8.17773pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 of 
+ []
+
+
+Overfull \hbox (20.31651pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 their 
+ []
+
+
+Overfull \hbox (20.82762pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 writ- 
+ []
+
+
+Overfull \hbox (16.35545pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ing, 
+ []
+
+
+Overfull \hbox (9.19995pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 as 
+ []
+
+
+Overfull \hbox (12.7777pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 as- 
+ []
+
+
+Overfull \hbox (26.06648pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 sessed 
+ []
+
+
+Overfull \hbox (9.45547pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 by 
+ []
+
+
+Overfull \hbox (12.81657pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 ex- 
+ []
+
+
+Overfull \hbox (16.73874pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 pert 
+ []
+
+
+Overfull \hbox (14.05547pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 hu- 
+ []
+
+
+Overfull \hbox (29.33595pt too wide) in paragraph at lines 21--22
+ \OT1/cmr/m/it/10 mans? 
+ []
+
+! Undefined control sequence.
+l.25         \Large
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no W in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+
+! LaTeX Error: \begin{document} ended by \end{titlepage}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29 \end{titlepage}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
+! Emergency stop.
+<*> ./titlepage.tex
+                   
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 24 strings out of 481212
+ 491 string characters out of 2913851
+ 243955 words of memory out of 3000000
+ 15712 multiletter control sequences out of 15000+200000
+ 535742 words of font info for 31 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 14i,1n,15p,303b,116s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  10 SEP 2020 23:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  12 SEP 2020 03:29
 entering extended mode
-**./proceedings.tex
-(proceedings.tex
+**C:/Users/rohan/extended_essay/EE/proceedings.tex
+(C:/Users/rohan/extended_essay/EE/proceedings.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-08-07>
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls"
@@ -1389,7 +1389,7 @@ l.30 ...erline {D}Data Processing}{30}{appendix.D}
  [2]
 (sections/intro.tex) (sections/theory.tex) [3]
 (sections/theory/nlp-fundamentals.tex [4] [5]
-<fig/king-man-woman-queen.png, id=293, 664.4825pt x 223.83624pt>
+<fig/king-man-woman-queen.png, id=295, 664.4825pt x 223.83624pt>
 File: fig/king-man-woman-queen.png Graphic file (type png)
 <use fig/king-man-woman-queen.png>
 Package pdftex.def Info: fig/king-man-woman-queen.png  used on input line 23.
@@ -1415,7 +1415,7 @@ LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <12> not available
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <12> not available
 (Font)              Font shape `T1/txtt/m/sl' tried instead on input line 12.
 )) (sections/theory/bert.tex [8]
-<fig/rnn.png, id=331, 911.68605pt x 314.01315pt>
+<fig/rnn.png, id=333, 911.68605pt x 314.01315pt>
 File: fig/rnn.png Graphic file (type png)
 <use fig/rnn.png>
 Package pdftex.def Info: fig/rnn.png  used on input line 5.
@@ -1436,12 +1436,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
  []
 
 [9 <./fig/rnn.png>]
-<fig/positional_encodings.png, id=345, 531.48563pt x 190.46156pt>
+<fig/positional_encodings.png, id=347, 531.48563pt x 190.46156pt>
 File: fig/positional_encodings.png Graphic file (type png)
 <use fig/positional_encodings.png>
 Package pdftex.def Info: fig/positional_encodings.png  used on input line 25.
 (pdftex.def)             Requested size: 312.00119pt x 111.81042pt.
-<fig/first_encoder_step.jpg, id=349, 558.58687pt x 252.945pt>
+<fig/first_encoder_step.jpg, id=351, 558.58687pt x 252.945pt>
 File: fig/first_encoder_step.jpg Graphic file (type jpg)
 <use fig/first_encoder_step.jpg>
 Package pdftex.def Info: fig/first_encoder_step.jpg  used on input line 35.
@@ -1451,18 +1451,18 @@ Package pdftex.def Info: fig/first_encoder_step.jpg  used on input line 35.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10 <./fig/positional_encodings.png>]
-<fig/second_encoder_step.jpg, id=362, 537.50812pt x 298.11375pt>
+<fig/second_encoder_step.jpg, id=364, 537.50812pt x 298.11375pt>
 File: fig/second_encoder_step.jpg Graphic file (type jpg)
 <use fig/second_encoder_step.jpg>
 Package pdftex.def Info: fig/second_encoder_step.jpg  used on input line 51.
 (pdftex.def)             Requested size: 312.00119pt x 173.04256pt.
  [11 <./fig/first_encoder_step.jpg> <./fig/second_encoder_step.jpg>]
-<fig/multi-head.jpg, id=376, 585.68813pt x 306.39468pt>
+<fig/multi-head.jpg, id=378, 585.68813pt x 306.39468pt>
 File: fig/multi-head.jpg Graphic file (type jpg)
 <use fig/multi-head.jpg>
 Package pdftex.def Info: fig/multi-head.jpg  used on input line 61.
 (pdftex.def)             Requested size: 312.00119pt x 163.22527pt.
-<fig/full_neural.png, id=380, 417.81094pt x 356.0803pt>
+<fig/full_neural.png, id=382, 417.81094pt x 356.0803pt>
 File: fig/full_neural.png Graphic file (type png)
 <use fig/full_neural.png>
 Package pdftex.def Info: fig/full_neural.png  used on input line 79.
@@ -1475,7 +1475,7 @@ Overfull \hbox (3.576pt too wide) in paragraph at lines 7--8
 e di-rect crawl-ing/scrap-
  []
 
-<fig/tokenization.png, id=415, 1704.3675pt x 920.43875pt>
+<fig/tokenization.png, id=417, 1704.3675pt x 920.43875pt>
 File: fig/tokenization.png Graphic file (type png)
 <use fig/tokenization.png>
 Package pdftex.def Info: fig/tokenization.png  used on input line 14.
@@ -1491,7 +1491,7 @@ D42643.pygtex [16 <./fig/tokenization.png>])
 
 (_minted-proceedings/746B6D0F21D82F42191F8353E8AAD9B76770B958F7EC1EBC5ABE203354
 D42643.pygtex [17]) (fig/recall.tex) (fig/training-recall.tex
-<fig/training-recall.pdf, id=448, 1106.04967pt x 432.81763pt>
+<fig/training-recall.pdf, id=450, 1106.04967pt x 432.81763pt>
 File: fig/training-recall.pdf Graphic file (type pdf)
 <use fig/training-recall.pdf>
 Package pdftex.def Info: fig/training-recall.pdf  used on input line 4.
@@ -1633,13 +1633,13 @@ Package logreq Info: Writing requests to 'proceedings.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
  ) 
 Here is how much of TeX's memory you used:
- 34090 strings out of 481212
- 637206 string characters out of 2913851
- 1338864 words of memory out of 3000000
- 48888 multiletter control sequences out of 15000+200000
+ 34095 strings out of 481212
+ 637413 string characters out of 2913851
+ 1338917 words of memory out of 3000000
+ 48890 multiletter control sequences out of 15000+200000
  589984 words of font info for 110 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,13n,81p,2486b,1735s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,13n,81p,2517b,1737s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{glo:NLP} has been referenced but does not exist, 
 replaced by a fixed one
 
@@ -1663,9 +1663,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/txfonts/txsy.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on proceedings.pdf (38 pages, 689449 bytes).
+Output written on proceedings.pdf (38 pages, 689830 bytes).
 PDF statistics:
- 705 PDF objects out of 1000 (max. 8388607)
- 119 named destinations out of 1000 (max. 500000)
+ 707 PDF objects out of 1000 (max. 8388607)
+ 120 named destinations out of 1000 (max. 500000)
  366 words of extra memory for PDF output out of 10000 (max. 10000000)
 
