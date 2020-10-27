@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  12 SEP 2020 03:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.8.26)  26 OCT 2020 19:38
 entering extended mode
 **C:/Users/rohan/extended_essay/EE/proceedings.tex
 (C:/Users/rohan/extended_essay/EE/proceedings.tex
@@ -1381,7 +1381,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 ...erline {D}Data Processing}{30}{appendix.D}
+l.30 ...erline {D}Data Processing}{31}{appendix.D}
                                                   % [1])
 \tf@toc=\write7
 \openout7 = `proceedings.toc'.
@@ -1497,8 +1497,8 @@ File: fig/training-recall.pdf Graphic file (type pdf)
 Package pdftex.def Info: fig/training-recall.pdf  used on input line 4.
 (pdftex.def)             Requested size: 370.49881pt x 144.98323pt.
 ))
-(sections/discussion.tex [18 <./fig/training-recall.pdf>])
-(sections/conclusion.tex) [19]
+(sections/discussion.tex [18 <./fig/training-recall.pdf>]) [19]
+(sections/conclusion.tex)
 Overfull \hbox (24.40213pt too wide) in paragraph at lines 73--73
 []\T1/txr/m/n/12 Jay Alam-mar. \T1/txr/m/it/12 The Il-lus-trated Trans-former\T
 1/txr/m/n/12 . June 2018. \T1/txr/m/sc/12 url\T1/txr/m/n/12 : [][]$\T1/txtt/m/n
@@ -1531,13 +1531,13 @@ Overfull \hbox (2.44794pt too wide) in paragraph at lines 73--73
 rformance Deep
  []
 
-
+[21]
 Overfull \hbox (10.56204pt too wide) in paragraph at lines 73--73
 []\T1/txr/m/n/12 Ashish Vaswani et al. ``At-ten-tion Is All You Need''. In: \T1
 /txr/m/it/12 CoRR \T1/txr/m/n/12 abs / 1706.03762
  []
 
-[21] (appendix/appendix.tex
+[22] (appendix/appendix.tex
 Overfull \hbox (72.40794pt too wide) in paragraph at lines 3--4
 \T1/txr/m/n/12 All code uti-lized in this project can be found at https://githu
 b.com/rohanbansal12/extended_essay.
@@ -1554,32 +1554,32 @@ LaTeX Font Info:    Trying to load font information for TS1+txtt on input line
  ("C:\Program Files\MiKTeX 2.9\tex/latex/txfonts\ts1txtt.fd"
 File: ts1txtt.fd 2000/12/15 v3.1
 )
-[22
+[23
 
 ])
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/FA8459823E5BF3E424B843E1E6226B6C6770B958F7EC1EBC5ABE203354
-D42643.pygtex [23] [24] [25])) (appendix/scraping.tex
+D42643.pygtex [24] [25] [26])) (appendix/scraping.tex
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/63AEA3590C03B4E0F10B9BBB2862C0936770B958F7EC1EBC5ABE203354
-D42643.pygtex [26]
+D42643.pygtex [27]
 LaTeX Font Info:    Font shape `TS1/txtt/b/n' in size <12> not available
 (Font)              Font shape `TS1/txtt/bx/n' tried instead on input line 62.
- [27])
+ [28])
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/DC102B64977B42868E11A15E365867F36770B958F7EC1EBC5ABE203354
-D42643.pygtex [28] [29])) (appendix/processing.tex
+D42643.pygtex [29] [30])) (appendix/processing.tex
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/5B07F4CC34F479AB7DFA036CEB6F16F76770B958F7EC1EBC5ABE203354
-D42643.pygtex [30] [31] [32])) (appendix/data-info.tex)
+D42643.pygtex [31] [32] [33])) (appendix/data-info.tex)
 Overfull \hbox (25.82796pt too wide) in paragraph at lines 22--24
 \T1/txr/m/n/12 The scraped data was con-verted into train, test, val-i-da-tion 
 sets through a $\OT1/txr/m/n/12 70%\OML/txmi/m/it/12 ; \OT1/txr/m/n/12 15%\OML/
@@ -1591,7 +1591,7 @@ txmi/m/it/12 ; \OT1/txr/m/n/12 15%$
 
 
 (_minted-proceedings/172A969BA4407C17527D4E55AD5C06796770B958F7EC1EBC5ABE203354
-D42643.pygtex [33]) [34]
+D42643.pygtex [34]) [35]
 \openout3 = `proceedings.pyg'.
 
 
@@ -1606,19 +1606,19 @@ D42643.pygtex)
 
 
 (_minted-proceedings/9546A71136B9288DCC318E4B43ED8AC26770B958F7EC1EBC5ABE203354
-D42643.pygtex [35])
+D42643.pygtex [36])
 \openout3 = `proceedings.pyg'.
 
 
 (_minted-proceedings/5818BA261C203730403A9D249A39CB626770B958F7EC1EBC5ABE203354
-D42643.pygtex [36])) (appendix/permissions.tex
+D42643.pygtex [37])) (appendix/permissions.tex
 Overfull \hbox (18.17236pt too wide) in paragraph at lines 10--10
 []\T1/txr/bx/n/14.4 Permission Re-ceived from Mr. Uri Bram of The Browser 
  []
 
 ))
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
- [37]
+ [38]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
  (proceedings.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
@@ -1633,13 +1633,13 @@ Package logreq Info: Writing requests to 'proceedings.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
  ) 
 Here is how much of TeX's memory you used:
- 34095 strings out of 481212
- 637413 string characters out of 2913851
+ 34096 strings out of 481212
+ 637420 string characters out of 2913851
  1338917 words of memory out of 3000000
  48890 multiletter control sequences out of 15000+200000
  589984 words of font info for 110 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,13n,81p,2517b,1737s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,13n,81p,2517b,1743s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{glo:NLP} has been referenced but does not exist, 
 replaced by a fixed one
 
@@ -1663,9 +1663,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/txfonts/txsy.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on proceedings.pdf (38 pages, 689830 bytes).
+Output written on proceedings.pdf (39 pages, 691988 bytes).
 PDF statistics:
- 707 PDF objects out of 1000 (max. 8388607)
- 120 named destinations out of 1000 (max. 500000)
+ 715 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
  366 words of extra memory for PDF output out of 10000 (max. 10000000)
 

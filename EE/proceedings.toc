@@ -19,23 +19,23 @@
 \contentsline {subsection}{\numberline {6.2}Experimental Setup: BERT}{17}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Quantitative Evaluation}{18}{subsection.6.3}%
 \contentsline {section}{\numberline {7}Discussion}{19}{section.7}%
-\contentsline {section}{\numberline {8}Conclusion}{19}{section.8}%
-\contentsline {section}{\numberline {A}Code Base}{22}{appendix.A}%
-\contentsline {section}{\numberline {B}Crawling Scripts}{22}{appendix.B}%
-\contentsline {subsection}{\numberline {B.1}Longform.org Crawling Script}{22}{subsection.B.1}%
-\contentsline {subsection}{\numberline {B.2}Vox Crawling Script}{24}{subsection.B.2}%
-\contentsline {section}{\numberline {C}Scraping Scripts}{26}{appendix.C}%
-\contentsline {subsection}{\numberline {C.1}Vanilla Scraping Script}{26}{subsection.C.1}%
-\contentsline {subsection}{\numberline {C.2}Selenium Scraping Script}{28}{subsection.C.2}%
-\contentsline {section}{\numberline {D}Data Processing}{30}{appendix.D}%
-\contentsline {section}{\numberline {E}Data Distribution}{33}{appendix.E}%
-\contentsline {section}{\numberline {F}Training Scripts}{33}{appendix.F}%
-\contentsline {subsection}{\numberline {F.1}Evenly-Split Batch Generator}{33}{subsection.F.1}%
-\contentsline {subsection}{\numberline {F.2}Batched Predictions}{34}{subsection.F.2}%
-\contentsline {subsubsection}{\numberline {F.2.1}RankFromSets}{35}{subsubsection.F.2.1}%
-\contentsline {subsubsection}{\numberline {F.2.2}BERT}{35}{subsubsection.F.2.2}%
-\contentsline {subsection}{\numberline {F.3}Recall Calculation}{35}{subsection.F.3}%
-\contentsline {subsection}{\numberline {F.4}Generate Rankings List}{36}{subsection.F.4}%
-\contentsline {section}{\numberline {G}Permission Email}{37}{appendix.G}%
-\contentsline {subsection}{\numberline {G.1}Email Sent to Mr. Uri Bram of The Browser}{37}{subsection.G.1}%
-\contentsline {subsection}{\numberline {G.2}Permission Received from Mr. Uri Bram of The Browser}{37}{subsection.G.2}%
+\contentsline {section}{\numberline {8}Conclusion}{20}{section.8}%
+\contentsline {section}{\numberline {A}Code Base}{23}{appendix.A}%
+\contentsline {section}{\numberline {B}Crawling Scripts}{23}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Longform.org Crawling Script}{23}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}Vox Crawling Script}{25}{subsection.B.2}%
+\contentsline {section}{\numberline {C}Scraping Scripts}{27}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Vanilla Scraping Script}{27}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Selenium Scraping Script}{29}{subsection.C.2}%
+\contentsline {section}{\numberline {D}Data Processing}{31}{appendix.D}%
+\contentsline {section}{\numberline {E}Data Distribution}{34}{appendix.E}%
+\contentsline {section}{\numberline {F}Training Scripts}{34}{appendix.F}%
+\contentsline {subsection}{\numberline {F.1}Evenly-Split Batch Generator}{34}{subsection.F.1}%
+\contentsline {subsection}{\numberline {F.2}Batched Predictions}{35}{subsection.F.2}%
+\contentsline {subsubsection}{\numberline {F.2.1}RankFromSets}{36}{subsubsection.F.2.1}%
+\contentsline {subsubsection}{\numberline {F.2.2}BERT}{36}{subsubsection.F.2.2}%
+\contentsline {subsection}{\numberline {F.3}Recall Calculation}{36}{subsection.F.3}%
+\contentsline {subsection}{\numberline {F.4}Generate Rankings List}{37}{subsection.F.4}%
+\contentsline {section}{\numberline {G}Permission Email}{38}{appendix.G}%
+\contentsline {subsection}{\numberline {G.1}Email Sent to Mr. Uri Bram of The Browser}{38}{subsection.G.1}%
+\contentsline {subsection}{\numberline {G.2}Permission Received from Mr. Uri Bram of The Browser}{38}{subsection.G.2}%
