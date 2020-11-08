@@ -1,23 +1,23 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'proceedings.blg'
-[61] biber-MSWIN64:322> INFO - === 
-[78] Biber.pm:415> INFO - Reading 'proceedings.bcf'
-[180] Biber.pm:943> INFO - Found 21 citekeys in bib section 0
-[196] Biber.pm:4256> INFO - Processing section 0
-[196] Utils.pm:75> INFO - Globbing data source 'bib.bib'
-[217] Utils.pm:91> INFO - Globbed data source 'bib.bib' to bib.bib
-[231] Biber.pm:4455> INFO - Looking for bibtex format file 'bib.bib' for section 0
-[234] bibtex.pm:1653> INFO - LaTeX decoding ...
-[269] bibtex.pm:1471> INFO - Found BibTeX data source 'bib.bib'
-[307] Utils.pm:304> WARN - month field 'Jul' in entry 'king_man_woman_queen' is not an integer - this will probably not sort properly.
-[351] Utils.pm:304> WARN - month field 'Aug' in entry 'olah_2015' is not an integer - this will probably not sort properly.
-[357] Utils.pm:304> WARN - month field 'Jun' in entry 'alammar_2018' is not an integer - this will probably not sort properly.
-[359] Utils.pm:304> WARN - month field 'Dec' in entry 'karim_2019' is not an integer - this will probably not sort properly.
-[375] Utils.pm:304> WARN - month field 'Nov' in entry 'alammar_2019' is not an integer - this will probably not sort properly.
-[423] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[423] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[424] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[424] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[448] bbl.pm:652> INFO - Writing 'proceedings.bbl' with encoding 'UTF-8'
-[464] bbl.pm:755> INFO - Output to proceedings.bbl
-[464] Biber.pm:128> INFO - WARNINGS: 5
+[63] biber-MSWIN64:322> INFO - === 
+[83] Biber.pm:415> INFO - Reading 'proceedings.bcf'
+[198] Biber.pm:943> INFO - Found 22 citekeys in bib section 0
+[212] Biber.pm:4256> INFO - Processing section 0
+[212] Utils.pm:75> INFO - Globbing data source 'bib.bib'
+[222] Utils.pm:91> INFO - Globbed data source 'bib.bib' to bib.bib
+[236] Biber.pm:4455> INFO - Looking for bibtex format file 'bib.bib' for section 0
+[239] bibtex.pm:1653> INFO - LaTeX decoding ...
+[275] bibtex.pm:1471> INFO - Found BibTeX data source 'bib.bib'
+[316] Utils.pm:304> WARN - month field 'Jul' in entry 'king_man_woman_queen' is not an integer - this will probably not sort properly.
+[362] Utils.pm:304> WARN - month field 'Aug' in entry 'olah_2015' is not an integer - this will probably not sort properly.
+[368] Utils.pm:304> WARN - month field 'Jun' in entry 'alammar_2018' is not an integer - this will probably not sort properly.
+[371] Utils.pm:304> WARN - month field 'Dec' in entry 'karim_2019' is not an integer - this will probably not sort properly.
+[388] Utils.pm:304> WARN - month field 'Nov' in entry 'alammar_2019' is not an integer - this will probably not sort properly.
+[450] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[450] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[450] Biber.pm:4084> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[450] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[481] bbl.pm:652> INFO - Writing 'proceedings.bbl' with encoding 'UTF-8'
+[504] bbl.pm:755> INFO - Output to proceedings.bbl
+[505] Biber.pm:128> INFO - WARNINGS: 5

@@ -1,0 +1,63 @@
+% !TEX root = ../regeneron.tex
+
+% from victor veitch
+
+\usepackage[%
+minnames=1,maxnames=99,maxcitenames=2,
+style=authoryear, %alphabetic, numeric, authoryear
+doi=false,
+url=true,
+giveninits=true, % true, false
+hyperref,
+natbib,
+backend=biber,
+sorting=nyt
+]{biblatex}%
+
+% suppress 'in'
+\renewbibmacro{in:}{}
+
+% \newbibmacro*{journal}{%
+%   \iffieldundef{journaltitle}
+%     {}
+%     {\printtext[journaltitle]{%
+%       \printfield[noformat]{journaltitle}%
+%       \setunit{\subtitlepunct}%
+%       \printfield[noformat]{journalsubtitle}}}}
+
+% make lower case
+% \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}
+
+\AtEveryBibitem{%
+\ifentrytype{article}{
+    \clearfield{url}%
+    \clearfield{eprint}
+}{}
+\ifentrytype{book}{
+    \clearfield{url}%
+}{}
+\ifentrytype{collection}{
+    \clearfield{url}%
+}{}
+\ifentrytype{incollection}{
+    \clearfield{url}%
+}{}
+}
+
+\AtEveryBibitem{
+    \clearfield{pages}
+    \clearfield{review}%
+    \clearfield{series}%%
+    \clearfield{volume}
+    \clearfield{pages}
+    \clearfield{month}
+    \clearfield{eprint}
+    \clearfield{isbn}
+    \clearfield{issn}
+    \clearfield{note}
+    \clearlist{location}
+    \clearfield{series}
+    \clearlist{publisher}
+    \clearlist{language}
+    \clearname{editor}
+}{}

@@ -1,4 +1,4 @@
-\gls{rfs} was proposed by \textcite{altosaar2020rankfromsets:} and was initially used for the task of recommending meals to users based on their prior data of favorite food combinations. I used a slightly modified version in my research. The recommender system utilizes an unordered set of attributes to represent each individual item. An inner-product architeture parametrizes the classifier:
+\gls{rfs} was proposed by \textcite{altosaar2020rankfromsets:} and was initially used for the task of recommending meals to users based on their prior data of favorite food combinations. I used a slightly modified version in my research. The recommender system utilizes an unordered set of attributes to represent each individual item. An inner-product architecture parametrizes the classifier:
 \begin{equation}
 \label{eq:inner-product}
   f\left(q, x_m\right) = \theta_p^\top\left(\frac{1}{|x_m|}\sum_{j\in x_m}
@@ -8,13 +8,13 @@
 
 Each aspect of \Cref{eq:inner-product} has an intuitive definition:
 
-$\theta_p^\top$: the publication embedding for publication $p$. In this essay, there is only one 
-publication (that of quality writing), however the simplicity of the model allows for easy 
+$\theta_p^\top$: the publication embedding for publication $p$. Here, there is only one 
+publication (that of quality writing), however, the simplicity of the model allows for 
 scalability to generate predictions for multiple publications.
 
 $x_m$: the set of unique word tokens in the article. Because the model does not take 
 positional relationships of words into account, the ordered set of tokens can be used to   
-mitigate the effects of the repetition of frequently used words such as \emph{the, and, a} etc.
+mitigate the effects of the repetition of frequently used words such as \emph{the, and, a}.
 
 $\beta_j$: the latent quality of each word in the set represented by $x_m$. This is a vector representing the word’s “meaning” that is updated during training. These vectors are summed across the set and normalized by word-list length.
 
@@ -34,7 +34,7 @@ In \Cref{eq:sigmoid_rfs}, $\sigma$ is the sigmoid function, defined by:
 S(x) = \frac{1}{1 + e^{-x}}, 
 \end{equation}
 
-$\sigma$ takes an input and and generates a final probablity between $0$ and $1$, which is then rounded to get a positive or negative prediction ~\parencite{svetoslav_2015}. The implementation of the model is presented through a custom subclass of the PyTorch Module ~\parencite{NEURIPS2019_9015} and ~\parencite{altosaar2020rankfromsets:}:
+$\sigma$ takes an input and generates a final probability between $0$ and $1$, which is then rounded to get a positive or negative prediction~\parencite{svetoslav_2015}. The implementation of the model is presented through a custom subclass of the PyTorch Module~\parencite{NEURIPS2019_9015} and~\parencite{altosaar2020rankfromsets:}:
 
 \begin{minted}{python}
 class RankFromSets(nn.Module):

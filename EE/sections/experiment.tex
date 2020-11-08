@@ -1,21 +1,23 @@
-For both experiments, 15$\%$ of the data was held out as a test and validation set each. The  exact breakdowns of the sets can be seen in Appendix .Recall was utilized to measure performance ($\%$ of true positives in top 10 and 1000 of predictions). Gridsearchs were used to run models with all posible combinations of chosen configurations. The models were also evaluated with early-stopping (training was stopped when model exhibited maximum performance on the validation set) to prevent over-fitting.
+For both experiments, 15$\%$ of the data was held out as a test and validation set each. The exact breakdowns of the sets can be seen in~\Cref{appendix:data-info}. Recall was utilized to measure performance ($\%$ of true positives in the top 10 and 1000 predictions). Gridsearches were used to run models with all possible combinations of chosen configurations. The models were also evaluated with early-stopping (stopped when model exhibited maximum performance on the validation set) to prevent over-fitting.
 
 \subsection{Experimental Setup: RankFromSets}
-\acrshort{rfs} was run using RMSProp optimizer~\parencite{tieleman2012lecture} with a momentum of 0.9 and a gridsearch was done over learning rates of $\{10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}\}$, embedding sizes of $\{10, 25, 50, 100, 500, 1000\}$, and a decision of whether or not to pre-initialize the model with BERT embeddings. The basic training loop is shown here:
+\acrshort{rfs} was run using RMSProp optimizer~\parencite{tieleman2012lecture} with a momentum of 0.9 and a grid-search was done over learning rates of $\{10^{-2}, 10^{-3}, 10^{-4}, 10^{-5}\}$, embedding sizes of $\{10, 25, 50, 100, 500, 1000\}$, and a decision of whether or not to pre-initialize the model with BERT embeddings. The basic training loop is shown here:
 \begin{minted}{python}
 for step, batch in enumerate(cycle(train_loader)):
     # turn to training mode and calculate loss for backpropagation
     torch.enable_grad()
     model.train()
     optimizer.zero_grad()
-    publications, articles, word_attributes, attribute_offsets, real_labels = batch
+    (publications, articles, word_attributes, 
+        attribute_offsets, real_labels) = batch
     publication_set = [args.target_publication] * len(real_labels)
     publication_set = torch.tensor(publication_set, dtype=torch.long)
     publication_set = publication_set.to(device)
     articles = articles.to(device)
     word_attributes = word_attributes.to(device)
     attribute_offsets = attribute_offsets.to(device)
-    logits = model(publication_set, articles, word_attributes, attribute_offsets)
+    logits = model(publication_set, articles, word_attributes, 
+                    attribute_offsets)
     L = loss(logits, labels)
     L.backward()
     optimizer.step()
@@ -23,7 +25,7 @@ for step, batch in enumerate(cycle(train_loader)):
 \end{minted}
 
 \subsection{Experimental Setup: BERT}
-As \acrshort{bert} already comes "pre-trained", I fine-tuned it to the collected data with the AdamW optimizer and a linear learning rate scheduler with warm up steps according to best practices, as outlined by ~\textcite{devlin2019bert:} and ~\textcite{wolf2019huggingfaces}. The model used a batch size of 32, and articles had maximum length of 512 tokens. A grid search was performed over learning rates of $\{2, 3, 4, 5\} \times 10^{-5}$, warmup steps of $\{10^2, 10^3, 10^4\}$, and total training steps $\{10^2, 10^3, 10^4, 10^5\} \times 5$. The basic training loop is shown here:
+As \acrshort{bert} already comes "pre-trained", I fine-tuned it to the collected data with the AdamW optimizer and a linear learning rate scheduler with warm-up steps according to best practices, as outlined by~\textcite{devlin2019bert:} and~\textcite{wolf2019huggingfaces}. The model used a batch size of 32, and articles had a maximum length of 512 tokens. A grid-search was performed over learning rates of $\{2, 3, 4, 5\} \times 10^{-5}$, warmup steps of $\{10^2, 10^3, 10^4\}$, and total training steps $\{10^2, 10^3, 10^4, 10^5\} \times 5$. The basic training loop is shown here:
 \begin{minted}{python}
 for step, batch in enumerate(cycle(train_loader)):
     # turn to training mode and calculate loss for backpropagation
@@ -44,9 +46,9 @@ for step, batch in enumerate(cycle(train_loader)):
 \end{minted}
 
 \subsection{Quantitative Evaluation}
-The best performing models from both approaches were chosen, and were evaluated via recall on the test set.
+The best performing models from both approaches were chosen and evaluated via recall on the test set.
 \input{fig/recall}
 
-Additionally, the time taken to train the models is shown:
+Additionally, the time taken to train the models is shown in~\Cref{fig:training-recall}.
 
 \input{fig/training-recall}

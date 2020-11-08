@@ -28,6 +28,7 @@
 \input{preamble/preamble}
 \input{preamble/preamble_math}
 \input{preamble/preamble_acronyms}
+\input{preamble/preamble_biblatex}
 
 \bibliography{bib}
 \begin{document}
@@ -69,7 +70,9 @@
 \section{Conclusion}
 \input{sections/conclusion}
 
-\printbibliography
+\newpage
+
+\printbibliography[heading=bibintoc, title={Bibliography}]
 \cleardoublepage
 \appendix
 \input{appendix/appendix}
